@@ -1,85 +1,36 @@
-## Pasos
+#Proyecto IAW
 
-- clonar el repo https://github.com/iaw-2023/laravel-template y mantener como owner la organizaciÃ³n de la materia.
-## parados en el directorio del repositorio recientemente clonado, ejecutar:
+##Idea y fundamentos
+Nuestro idea esta pensada desde la nostalgia, queremos algo que de alguna forma nos haga poder cumplir sue¤os lejanos.
+A partir de esto pensamos en poder unir esta nostalgia con la pasion por los vehiculos e ideamos un *servicio de alquiler de vehiculos* clasicos, pero no solo clasicos por antiguos, sino vehiculos que hemos visto en la television, en las peliculas de cine y en nuestras queridas series.
 
-- `composer install`
-- `cp .env.example .env`
-- `php artisan key:generate`
-- `php artisan serve`
+##Diagrama ER
 
-Con el Ãºltimo comando, pueden acceder a http://127.0.0.1:8000/ y ver la cÃ¡scara de la aplicaciÃ³n Laravel
+![imagen](https://imgur.com/a/c0QrdG1)
+(Otro diagrama para aclarar)
+![imagen](https://imgur.com/a/doNqwAe)
 
-### Requisitos
+##Actualizacion de datos (Framework PHP - Laravel)
+En primer lugar, tenemos la entidad de "Usuario" que contendra la informacion basica de los usuarios que se registran en el sistema, como su nombre, correo electronico y contrase¤a. A partir de esta entidad, podemos definir los roles de los usuarios y las relaciones entre ellos. Estos roles son:
 
-- tener [composer](https://getcomposer.org/) instalado
-- tener [php](https://www.php.net/) instalado
+- Administrador: sera el encargado de administrar el sistema, y tendra acceso a todas las funciones del mismo.
+	-- Tiene la posibilidad de hacer ABM sobre todas las entidades del sistema.
+- Empleado: tendra acceso limitado al sistema, segun los permisos que le otorgue el administrador.
+	-- Puede crear reservas, modificar ciertos datos y crear nuevas publicaciones de autos recien llegados.
+- Cliente: sera el usuario final del sistema, que podra reservar y alquilar vehiculos.
+	-- Consulta y paga por el servicio.
 
+Ahora vamos a definir las entidades que estaran relacionadas con los usuarios:
 
+- Vehiculo: contendra la informacion de los vehiculos disponibles para alquilar, como su marca, modelo y precio.
+- Reserva: contendra la informacion de las reservas realizadas por los clientes, como el vehiculo alquilado, la fecha de inicio y fin del alquiler, y el precio final.
+- Comentario: los clientes podran dejar comentarios y valoraciones sobre los vehiculos y el servicio. (Posiblemente)
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+##Servicio web que provee
+El servicio podra brindar reservas de autos clasicos, filtrados por los siguientes atributos:
+- Marca
+- A¤o o Modelo
+- Precio
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+##Visualizacion y Acceso a la Informacion (Javascript - React)
+Como dijimos al principio podremos recordar y cumplir sue¤os nostalgicos logrando alquilar nuestro coche deseado, haciendo una busqueda filtrada por distintos antributos ya nombrados. Tambien podremos visualizar la coleccion de vehiculos de forma cronologica a los que esten disponibles y hacer un camino del pasado al futuro recorriendo epocas. Existira un apartado para poder investigar sobre los distintos coches y cual fue su historia y como fue que se consiguio.
