@@ -7,6 +7,7 @@ A partir de esto pensamos en poder unir esta nostalgia con la pasion por los veh
 ## Diagrama ER
 
  <!--  <img src="https://i.imgur.com/eJJUDT5.png">  -->
+ <!-- La relacion de TIENE podria ser eliminada, con la relacion triple de Admin-Reserva-Vehiculo alcanza -->
 <img src="https://i.imgur.com/wSWOlFF.png">
 
 ## Actualizacion de datos (Framework PHP - Laravel)
