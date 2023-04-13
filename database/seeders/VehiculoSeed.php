@@ -13,16 +13,13 @@ class VehiculoSeed extends Seeder
      */
     public function run(): void
     {
-        Vehiculo::factory()
-            ->count(10)
-            ->create();
+        Vehiculo::factory(5)->create();
         
         Vehiculo::factory()->create([
-            'id' => $this->faker->phoneNumber(),
-            'name' => $this->faker->firstName(),
-            'patente' => $this->faker->word(1, true),
-            'modelo' =>  $this->faker->randomNumber($nbDigits = 4),
-            'precio' =>  $this->faker->randomNumber($nbDigits = 5),
+            'name' => 'testName',
+            'patente' => 'test',
+            'modelo' =>  '1000',
+            'precio' =>  '1',
         ]);
         
     }

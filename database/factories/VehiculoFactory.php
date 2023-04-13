@@ -16,16 +16,14 @@ class VehiculoFactory extends Factory
      * @return array<string, mixed>
      */
 
-    protected $model = Vehiculo::class;
 
     public function definition(): array
     {
         return [
-            'id' => $this->faker->phoneNumber(),
-            'name' => $this->faker->name(),
-            'patente' => $this->faker->word(1, true),
-            'modelo' => $this->faker->randomNumber($nbDigits = 4),
-            'precio' => $this->faker->randomNumber($nbDigits = 5),
+            'name' => $this->faker->firstName(),
+            'patente' => $this->faker->numberBetween(0,100),
+            'modelo' => $this->faker->numberBetween(1000,2000),
+            'precio' => $this->faker->numberBetween(0,1000),
         ];
     }
 }

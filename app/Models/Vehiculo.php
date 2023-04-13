@@ -10,7 +10,6 @@ class Vehiculo extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
         'modelo',
         'patente',
         'modelo',

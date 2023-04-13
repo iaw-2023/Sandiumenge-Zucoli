@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
          ]);
 
         $this->call(ReservaSeed::class);
-        //$this->call(VehiculoSeed::class);
+        $this->call(VehiculoSeed::class);
          
     }
 }
