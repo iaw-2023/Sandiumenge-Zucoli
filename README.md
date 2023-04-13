@@ -6,7 +6,8 @@ A partir de esto pensamos en poder unir esta nostalgia con la pasion por los veh
 
 ## Diagrama ER
 
-<img src="https://i.imgur.com/eJJUDT5.png">
+ <!--  <img src="https://i.imgur.com/eJJUDT5.png">  -->
+<img src="https://i.imgur.com/wSWOlFF.png">
 
 ## Actualizacion de datos (Framework PHP - Laravel)
 En primer lugar, tenemos la entidad de "Usuario" que contendra la informacion basica de los usuarios que se registran en el sistema, como su nombre, correo electronico y contrase¤a. A partir de esta entidad, podemos definir los roles de los usuarios y las relaciones entre ellos. Estos roles son:
