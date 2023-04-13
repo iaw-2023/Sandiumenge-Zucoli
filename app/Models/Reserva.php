@@ -11,5 +11,6 @@ class Reserva extends Model
 
     protected $fillable = [
         'id',
+        //vincular vinculo
     ];
 }

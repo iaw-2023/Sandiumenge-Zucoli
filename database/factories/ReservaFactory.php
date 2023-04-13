@@ -17,7 +17,8 @@ class ReservaFactory extends Factory
     public function definition(): array
     {
         return [
-            'id' => $this->faker->phoneNumber(),
+            'id' => fake()->phoneNumber(),
+            // como vincular un vehiculo
         ];
     }
 }

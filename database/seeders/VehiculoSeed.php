@@ -13,17 +13,17 @@ class VehiculoSeed extends Seeder
      */
     public function run(): void
     {
-        /*DB::table('vehiculos')->insert([
-            'id' => Str::random(10),
-            'name' => Str::random(10),
-            'patente' => Str::random(7),
-            'modelo' => Int::random(2020),
-            'precio' => Int::random(1000),
-        ]);*/ //No estoy seguro si esto va aca o no
-
         Vehiculo::factory()
             ->count(10)
             ->create();
-
+        
+        Vehiculo::factory()->create([
+            'id' => $this->faker->phoneNumber(),
+            'name' => $this->faker->firstName(),
+            'patente' => $this->faker->word(1, true),
+            'modelo' =>  $this->faker->randomNumber($nbDigits = 4),
+            'precio' =>  $this->faker->randomNumber($nbDigits = 5),
+        ]);
+        
     }
 }
