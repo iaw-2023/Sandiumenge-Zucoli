@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreign('id_marca')
                   ->references('id')
-                  ->on('marca');
+                  ->on('marcas');
             $table->integer('modelo');
             $table->integer('precio');
-            $table->boolval('disponible');
+            $table->boolean('disponible');
             $table->timestamps();
         });
     }
