@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
+            $table->foreign('id_vehiculo')
+                    ->references('id')
+                    ->on('vehiculo');
+            $table->foreign('id_reserva')
+                    ->references('id')
+                    ->on('reservas');
             $table->timestamps();
         });
     }
