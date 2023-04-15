@@ -6,31 +6,27 @@ A partir de esto pensamos en poder unir esta nostalgia con la pasion por los veh
 
 ## Diagrama ER
 
- <!--  <img src="https://i.imgur.com/eJJUDT5.png">  -->
- <!-- La relacion de TIENE podria ser eliminada, con la relacion triple de Admin-Reserva-Vehiculo alcanza -->
-<img src="https://i.imgur.com/wSWOlFF.png">
+ <!-- 
+ Inicialmente el diagrama que teniamos es el siguiente 
+ <img src="https://i.imgur.com/wSWOlFF.png">
+ -->
+El diagrama entidad relacion resultante se puede encontrar en la raiz del repositorio como "ER.png"
 
-## Actualizacion de datos (Framework PHP - Laravel)
-En primer lugar, tenemos la entidad de "Usuario" que contendra la informacion basica de los usuarios que se registran en el sistema, como su nombre, correo electronico y contrase¤a. A partir de esta entidad, podemos definir los roles de los usuarios y las relaciones entre ellos. Estos roles son:
+Dentro del diagrama entidad relacion se encuentran 4 entidades las cuales son:
+-Marcas: donde se encontraran identificadas las marcas de las cuales podran ser los vehiculos de nuestro sistema con su id y nombre.
+-Vehiculo: donde se encontraran los vehiculos que se posee en el negocio con su informacion sobre la marca, si estan disponibles o no (porque ya fueron reservados), su precio y modelo.
+-Reserva: donde se encuentran las reservas realizadas por los clientes, identificando la reserva por un id y al cliente por su mail
+-ReservaDetalles: donde se encontrara informacion mas detallada sobre cierta reserva como su vehiculo y el precio de la reserva.
 
-- Administrador: sera el encargado de administrar el sistema, y tendra acceso a todas las funciones del mismo.
-	-- Tiene la posibilidad de hacer ABM sobre todas las entidades del sistema.
-- Empleado: tendra acceso limitado al sistema, segun los permisos que le otorgue el administrador.
-	-- Puede crear reservas, modificar ciertos datos y crear nuevas publicaciones de autos recien llegados.
-- Cliente: sera el usuario final del sistema, que podra reservar y alquilar vehiculos.
-	-- Consulta y paga por el servicio.
+## Framework PHP - Laravel
 
-Ahora vamos a definir las entidades que estaran relacionadas con los usuarios:
+Dentro del proyecto laravel se podran actualizar dos de las entidades, siendo que el administrador podra hacer altas, bajas o modificaciones de las marcas y los vehiculos disponibles.
 
-- Vehiculo: contendra la informacion de los vehiculos disponibles para alquilar, como su marca, modelo y precio.
-- Reserva: contendra la informacion de las reservas realizadas por los clientes, como el vehiculo alquilado, la fecha de inicio y fin del alquiler, y el precio final.
-- Comentario: los clientes podran dejar comentarios y valoraciones sobre los vehiculos y el servicio. (Posiblemente)
+Se podran generar reportes sobre las reservas realizadas y su informacion detallada ya que es informacion relevante para el administrador.
+Ademas, se generaran informes sobre los vehiculos actualmente en el negocio, estando reservados o no.
 
-## Servicio web que provee
-El servicio podra brindar reservas de autos clasicos, filtrados por los siguientes atributos:
-- Marca
-- A¤o o Modelo
-- Precio
+Con respecto a la API, 
+<!-- no se que poner sobre la API-->
 
 ## Visualizacion y Acceso a la Informacion (Javascript - React)
 Como dijimos al principio podremos recordar y cumplir sue¤os nostalgicos logrando alquilar nuestro coche deseado, haciendo una busqueda filtrada por distintos antributos ya nombrados. Tambien podremos visualizar la coleccion de vehiculos de forma cronologica a los que esten disponibles y hacer un camino del pasado al futuro recorriendo epocas. Existira un apartado para poder investigar sobre los distintos coches y cual fue su historia y como fue que se consiguio.

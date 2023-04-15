@@ -16,10 +16,11 @@ class VehiculoSeed extends Seeder
         Vehiculo::factory(5)->create();
         
         Vehiculo::factory()->create([
-            'name' => 'testName',
-            'patente' => 'test',
+            'id' => '76',
+            'id_marca'=> '99',
             'modelo' =>  '1000',
             'precio' =>  '1',
+            'disponible'=> true,
         ]);
         
     }

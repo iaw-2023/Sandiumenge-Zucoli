@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Reserva>
  */
-class ReservaFactory extends Factory
+class MarcaFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +18,8 @@ class ReservaFactory extends Factory
     public function definition(): array
     {
         return [
-            'id' => $this->faker->numberBetween(1,100),            // como vincular un vehiculo,100
-            'email' => $faker->unique()->email,
-            //'email' => $faker->random(8).'@gmail.com';
+            'id' => $this->faker->numberBetween(1,100),           
+            'id' => $this->faker->randomLetter().$this->faker->randomNumber(5),
         ];
     }
 }

@@ -19,8 +19,10 @@ class DatabaseSeeder extends Seeder
              'email' => 'test@example.com',
          ]);
 
+        $this->call(MarcaSeed::class);
         $this->call(ReservaSeed::class);
         $this->call(VehiculoSeed::class);
+        $this->call(ReservaDetallesSeed::class);
          
     }
 }
