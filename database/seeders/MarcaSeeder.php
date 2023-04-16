@@ -16,7 +16,7 @@ class MarcaSeeder extends Seeder
 
         \App\Models\Marca::factory()->create([
             'id' => '99',
-            'nombre'=> 'ferrari',
+            'marca'=> 'ferrari',
         ]);
     }
 }

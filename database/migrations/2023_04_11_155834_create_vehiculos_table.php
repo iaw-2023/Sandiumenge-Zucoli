@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('vehiculos', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_marca');
             $table->foreign('id_marca')
                   ->references('id')
                   ->on('marcas');

@@ -17,12 +17,11 @@ class MarcaFactory extends Factory
      */
     public function definition(): array
     {
-        $marcas = array(ferrari, ford, chevrolet, mazda, subaru, toyota, delorean, bentley);
+        $marcas = array('Ferrari', 'Ford', 'Chevrolet', 'Mazda', 'Subaru', 'Toyota', 'DeLorean', 'Bentley');
 
         return [
-            'id' => $this->faker->numberBetween(1,100),           
-            'id' => $this->faker->randomLetter().$this->faker->randomNumber(5),
-            'marca' => $marcas[array_rand($marcas)],
+            'id' => $this->faker->numberBetween(1, 1000000),           
+            'marca' => $this->faker->randomElement($marcas),
         ];
     }
 }

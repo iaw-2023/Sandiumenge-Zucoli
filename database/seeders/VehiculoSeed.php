@@ -22,6 +22,5 @@ class VehiculoSeed extends Seeder
             'precio' =>  '1',
             'disponible'=> true,
         ]);
-        
     }
 }
