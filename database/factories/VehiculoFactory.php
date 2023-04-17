@@ -21,7 +21,7 @@ class VehiculoFactory extends Factory
     {
         return [
             'id' => $this->faker->numberBetween(0,100),
-            'id_marca'=> $this->faker->numberBetween(0,100),
+            'id_marca'=> '99',
             'modelo' => $this->faker->numberBetween(1000,2000),
             'precio' => $this->faker->numberBetween(0,1000),
             'disponible'=> true,

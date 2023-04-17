@@ -21,8 +21,8 @@ class ReservaDetallesFactory extends Factory
     {
         return [
             'id' => $this->faker->numberBetween(0,100),
-            'id_vehiculo' => $this->faker->numberBetween(1000,2000),
-            'id_reserva' => $this->faker->numberBetween(0,1000),
+            'id_vehiculo' => '76',
+            'id_reserva' => '99',
             'precio' => $this->faker->numberBetween(0,1000),
         ];
     }
