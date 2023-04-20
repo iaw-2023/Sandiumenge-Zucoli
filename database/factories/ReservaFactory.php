@@ -18,7 +18,7 @@ class ReservaFactory extends Factory
     public function definition(): array
     {
         return [
-            'id' => $this->faker->numberBetween(1,100), // como vincular un vehiculo,100
+            'id' => $this->faker->numberBetween(1,10000), // como vincular un vehiculo,100
             'email' => $this->faker->unique()->email, //'email' => $faker->random(8).'@gmail.com';
             'fecha_inicio'=> $this->faker->dateTime('now'),
             'fecha_final'=> $this->faker->dateTime('now'),

@@ -20,7 +20,7 @@ class VehiculoFactory extends Factory
     public function definition(): array
     {
         return [
-            'id' => $this->faker->numberBetween(0,100),
+            'id' => $this->faker->numberBetween(0,10000),
             'id_marca'=> '99',
             'modelo' => $this->faker->numberBetween(1000,2000),
             'precio' => $this->faker->numberBetween(0,1000),
