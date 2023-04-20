@@ -25,8 +25,7 @@ Dentro del proyecto laravel se podran actualizar dos de las entidades, siendo qu
 Se podran generar reportes sobre las reservas realizadas y su informacion detallada ya que es informacion relevante para el administrador.
 Ademas, se generaran informes sobre los vehiculos actualmente en el negocio, estando reservados o no.
 
-Con respecto a la API, 
-<!-- no se que poner sobre la API-->
+Con respecto a la API, las entidades que podran obtenerse son Marca, Vehiculo, ReservaDetalles y Reserva. Estas mismas entidades podran modificarse y ademas podra ser modificada la entidad Cliente en el momento en el que esta sea agregada a la base de datos.
 
 ## Visualizacion y Acceso a la Informacion (Javascript - React)
 Como dijimos al principio podremos recordar y cumplir sue¤os nostalgicos logrando alquilar nuestro coche deseado, haciendo una busqueda filtrada por distintos antributos ya nombrados. Tambien podremos visualizar la coleccion de vehiculos de forma cronologica a los que esten disponibles y hacer un camino del pasado al futuro recorriendo epocas. Existira un apartado para poder investigar sobre los distintos coches y cual fue su historia y como fue que se consiguio.
