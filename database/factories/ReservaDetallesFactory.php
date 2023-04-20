@@ -20,7 +20,7 @@ class ReservaDetallesFactory extends Factory
     public function definition(): array
     {
         return [
-            'id' => $this->faker->numberBetween(0,100),
+            'id' => $this->faker->unique()->numberBetween(0,100),
             'id_vehiculo' => '76',
             'id_reserva' => '99',
             'precio' => $this->faker->numberBetween(0,1000),

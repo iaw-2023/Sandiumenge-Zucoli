@@ -20,7 +20,7 @@ class MarcaFactory extends Factory
         $marcas = array('Ferrari', 'Ford', 'Chevrolet', 'Mazda', 'Subaru', 'Toyota', 'DeLorean', 'Bentley');
 
         return [
-            'id' => $this->faker->numberBetween(1, 1000000),           
+            'id' => $this->faker->unique()->numberBetween(1, 1000000),           
             'marca' => $this->faker->randomElement($marcas),
         ];
     }
