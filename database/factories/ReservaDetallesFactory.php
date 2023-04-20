@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use app\models\ReservaDetalles;
+use app\models\Vehiculo;
+use app\models\Reserva;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,8 +23,8 @@ class ReservaDetallesFactory extends Factory
     {
         return [
             'id' => $this->faker->unique()->numberBetween(0,100),
-            'id_vehiculo' => '76',
-            'id_reserva' => '99',
+            'id_vehiculo' => fake()->randomElement(Vehiculo::all())['id'],
+            'id_reserva' => fake()->randomElement(Reserva::all())['id'],
             'precio' => $this->faker->numberBetween(0,1000),
         ];
     }

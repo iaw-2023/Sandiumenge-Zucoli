@@ -21,7 +21,7 @@ class MarcaFactory extends Factory
 
         return [
             'id' => $this->faker->unique()->numberBetween(1, 1000000),           
-            'marca' => $this->faker->randomElement($marcas),
+            'marca' => $this->faker->unique()->randomElement($marcas),
         ];
     }
 }
