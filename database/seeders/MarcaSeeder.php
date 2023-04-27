@@ -1,0 +1,22 @@
+<?php
+
+namespace Database\Seeders;
+
+//use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class MarcaSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        \App\Models\Marca::factory(5)->create();
+
+        \App\Models\Marca::factory()->create([
+            'id' => '99',
+            'marca'=> 'ferrari',
+        ]);
+    }
+}
