@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
              'name' => 'admin iaw',
              'email' => 'admin@iaw.com',
-             'password' => 'admin123',
+             'password' => bcrypt('admin123'),
          ]);
 
         $this->call(MarcaSeeder::class);
