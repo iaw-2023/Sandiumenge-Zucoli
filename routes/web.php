@@ -16,6 +16,21 @@ use Inertia\Inertia;
 |
 */
 
+Route::get('/home', function () {
+    return view('/home');
+})->name('home');
+
+
+Route::resource('vehiculos', 'App\Http\Controllers\VehiculosController');
+//Route::resource('reservas', 'app\Http\Controllers\ReservasController');
+
+/*Route::get('/vehiculos', function () {
+    return view('/vehiculos/vehiculos');
+})->name('vehiculos');*/
+/*Route::get('/reservas', function () {
+    return view('/reservas/reservas');
+})->name('reservas');*/
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
