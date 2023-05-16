@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <!-- Aqui almaceno el head principal de la pagina junto con los scrips que se cargan al inicio -->
-  <title>WebSiteName</title>
+  <title>DreamCar</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">

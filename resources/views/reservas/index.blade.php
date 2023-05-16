@@ -1,0 +1,33 @@
+@extends('layouts.plantillabase')
+
+<title>DreamCar | Reservas</title>
+@section('contenido')
+<a href="/home" class="btn btn-primary">HOME</a>
+<a href="reservas/create" class="btn btn-primary">AGREGAR RESERVA</a>
+
+<table class="table table-dark table-striped mt-4">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">EMAIL</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($reservas as $reserva)
+        <tr>
+            <td>{{ $reserva->id }}</td>
+            <td>{{ $reserva->email }}</td>
+            <td>
+                <form action="{{ route('reservas.destroy',$reserva->id) }}" method='POST'>
+                    <a href="/reservas/{{ $reserva->id }}/edit" class="btn btn-info">EDITAR</a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">BORRAR</button>
+                <form>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+<a href="reservasDetalle" class="btn btn-primary">VER DETALLES DE LAS RESERVAS</a>
+@endsection

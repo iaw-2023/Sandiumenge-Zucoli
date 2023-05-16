@@ -2,7 +2,8 @@
 
 <title>DreamCar | Vehiculos</title>
 @section('contenido')
-<a href="vehiculos/create" class="btn btn-primary">CREAR</a>
+<a href="/home" class="btn btn-primary">HOME</a>
+<a href="vehiculos/create" class="btn btn-primary">AGREGAR VEHICULO</a>
 
 <table class="table table-dark table-striped mt-4">
     <thead>

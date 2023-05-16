@@ -20,16 +20,10 @@ Route::get('/home', function () {
     return view('/home');
 })->name('home');
 
-
+Route::resource('marcas', 'App\Http\Controllers\MarcasController');
 Route::resource('vehiculos', 'App\Http\Controllers\VehiculosController');
-//Route::resource('reservas', 'app\Http\Controllers\ReservasController');
-
-/*Route::get('/vehiculos', function () {
-    return view('/vehiculos/vehiculos');
-})->name('vehiculos');*/
-/*Route::get('/reservas', function () {
-    return view('/reservas/reservas');
-})->name('reservas');*/
+Route::resource('reservas', 'App\Http\Controllers\ReservasController');
+Route::resource('reservasDetalle', 'App\Http\Controllers\ReservasDetallesController');
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [

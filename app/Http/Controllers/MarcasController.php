@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Reserva;
+use App\Models\Marca;
 
-class ReservasController extends Controller
+class MarcasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $reservas = Reserva::all();
-        return view('reservas.index')->with('reservas',$reservas);
+        $marcas = Marca::all(); //trae todos los registros de la tabla
+        return view('marcas.index')->with('marcas',$marcas);
     }
 
     /**
@@ -21,7 +21,7 @@ class ReservasController extends Controller
      */
     public function create()
     {
-        return view('reservas.create');
+        return view('marcas.create');
     }
 
     /**
@@ -29,14 +29,14 @@ class ReservasController extends Controller
      */
     public function store(Request $request)
     {
-        $reservas = new Reserva();
+        $marcas = new Marca(); //crea un nuevo objecto de tipo vehiculo 
 
-        $reservas->id = $request->get('id');
-        $reservas->email = $request->get('email');
+        $marcas->id = $request->get('id');
+        $marcas->marca = $request->get('marca');
 
-        $reservas->save();
+        $marcas->save();
 
-        return redirect('/reservas');
+        return redirect('/marcas');
     }
 
     /**
@@ -52,8 +52,8 @@ class ReservasController extends Controller
      */
     public function edit(string $id)
     {
-        $reserva = Reserva::find($id);
-        return view('reservas.edit')->with('reserva',$reserva);
+        $marca = Marca::find($id);
+        return view('marcas.edit')->with('marca',$marca);
     }
 
     /**
@@ -61,14 +61,14 @@ class ReservasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $reserva = Reserva::find($id);
+        $marca = Marca::find($id);
 
-        $reserva->id = $request->get('id');
-        $reserva->email = $request->get('email');
+        $marca->id = $request->get('id');
+        $marca->marca = $request->get('marca');
 
-        $reserva->save();
+        $marca->save();
 
-        return redirect('/reservas');
+        return redirect('/marcas');
     }
 
     /**
@@ -76,10 +76,10 @@ class ReservasController extends Controller
      */
     public function destroy(string $id)
     {
-        $reserva = Reserva::find($id);
+        $marca = Marca::find($id);
 
-        $reserva->delete();
+        $marca->delete();
 
-        return redirect('/reservas');
+        return redirect('/marcas');
     }
 }
