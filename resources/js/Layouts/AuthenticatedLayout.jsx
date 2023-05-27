@@ -123,3 +123,16 @@ export default function Authenticated({ user, header, children }) {
         </div>
     );
 }
+
+/*
+Linea 24
+<NavLink href={route('dashboard')} active={route().current('dashboard')}>
+                                    Dashboard
+                                </NavLink>
+*/
+/*
+Linea 95
+<ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
+                            Dashboard
+                        </ResponsiveNavLink>
+*/

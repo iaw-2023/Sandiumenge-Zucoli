@@ -1,9 +1,10 @@
 @extends('layouts.plantillabase')
 <title>DreamCar | Crear</title>
+
 @section('contenido')
 <h2>CREAR REGISTRO</h2>
 
-<form action="/reservas" method="POST">
+<form action="/marcas" method="POST">
     @csrf <!-- directiva para el submit que nos crea un token oculto-->
     <div class="mb-3">
         <label for="" class="form-label">ID</label>
@@ -19,3 +20,4 @@
         <button type="submit" class="btn btn-primary" tabindex="4">GUARDAR</button>
     </div>
 </form>
+@endsection

@@ -47,7 +47,13 @@ class VehiculosController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $vehiculo = Vehiculo::with('vehiculo')->find($id);
+
+        if (!$vehiculo) {
+            return response()->json(['error' => 'No existe el Vehiculo'], 404);
+        }
+
+        return response()->json(['vehiculo' => $vehiculo]);
     }
 
     /**

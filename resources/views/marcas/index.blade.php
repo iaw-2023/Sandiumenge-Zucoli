@@ -3,13 +3,14 @@
 <title>DreamCar | Marcas</title>
 @section('contenido')
 <a href="/home" class="btn btn-primary">HOME</a>
-<a href="reservas/create" class="btn btn-primary">AGREGAR MARCA</a>
+<a href="marcas/create" class="btn btn-primary">AGREGAR MARCA</a>
 
 <table class="table table-dark table-striped mt-4">
     <thead>
         <tr>
             <th scope="col">ID</th>
             <th scope="col">MARCA</th>
+            <th scope="col">ACCIONES</th>
         </tr>
     </thead>
     <tbody>

@@ -29,7 +29,7 @@ class MarcasController extends Controller
      */
     public function store(Request $request)
     {
-        $marcas = new Marca(); //crea un nuevo objecto de tipo vehiculo 
+        $marcas = new Marca(); //crea un nuevo objecto de tipo Marca 
 
         $marcas->id = $request->get('id');
         $marcas->marca = $request->get('marca');
@@ -44,7 +44,13 @@ class MarcasController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $marca = Marca::with('marca')->find($id);
+
+        if (!$marca) {
+            return response()->json(['error' => 'No existe la Marca'], 404);
+        }
+
+        return response()->json(['marca' => $marca]);
     }
 
     /**

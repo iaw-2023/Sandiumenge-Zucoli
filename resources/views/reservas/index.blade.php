@@ -10,6 +10,7 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">EMAIL</th>
+            <th scope="col">ACCIONES</th>
         </tr>
     </thead>
     <tbody>
