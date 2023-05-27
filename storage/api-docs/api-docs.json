@@ -1,0 +1,630 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API DreamCar Reserva de vehiculos",
+        "description": "Esta API nos permitira ver y manipular informacion a las reservas de los vehiculos.",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/marcas": {
+            "get": {
+                "tags": [
+                    "Marcas"
+                ],
+                "summary": "Obtener lista de marcas",
+                "description": "Retorna una lista de todas las marcas en la base de datos",
+                "operationId": "c341c80c734843faa921821088a634e6",
+                "responses": {
+                    "200": {
+                        "description": "Lista de marcas encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "marca": {
+                                                "type": "string",
+                                                "maxLength": 50,
+                                                "example": "Nombre de una Marca",
+                                                "nullable": true
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/marcas/show/{id}": {
+            "get": {
+                "tags": [
+                    "Marcas"
+                ],
+                "summary": "Obtener una marcas por id",
+                "description": "Renorna los detalles de una marca",
+                "operationId": "4b10c8c6988d876ad72642e9a18ef6ce",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la marca",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalles de la marca con id seleccionado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "marca": {
+                                            "type": "string",
+                                            "maxLength": 50,
+                                            "example": "Nombre de una Marca",
+                                            "nullable": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/marcas/marca/{marca}": {
+            "get": {
+                "tags": [
+                    "Marcas"
+                ],
+                "summary": "Buscar marca por nombre",
+                "description": "Retorna una marca",
+                "operationId": "97688254c60ea360308e75e3dd90f1c0",
+                "parameters": [
+                    {
+                        "name": "marca",
+                        "in": "path",
+                        "description": "Nombre de la marca a buscar",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Marca encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "marca": {
+                                                "type": "string",
+                                                "maxLength": 50,
+                                                "example": "Nombre de una Marca",
+                                                "nullable": true
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No se encontro la marca",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/reservas": {
+            "get": {
+                "tags": [
+                    "Reservas"
+                ],
+                "summary": "Obtener lista de reservas",
+                "description": "Retorna una lista de todas las reservas en la base de datos",
+                "operationId": "0a259de14bd0e84b3fdaa1a5e1078908",
+                "responses": {
+                    "200": {
+                        "description": "Lista de reservas encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "maxLength": 50,
+                                                "example": "Email de una reserva",
+                                                "nullable": true
+                                            },
+                                            "fecha_inicio": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "18/05/2023"
+                                            },
+                                            "fecha_final": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "18/05/2024"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/reservas/show/{id}": {
+            "get": {
+                "tags": [
+                    "Reservas"
+                ],
+                "summary": "Obtener una reserva por id",
+                "description": "Renorna los detalles de una reserva",
+                "operationId": "c73e3697aaef74220acea5b4394ccdf5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalles de la reserva con id seleccionado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "maxLength": 50,
+                                            "example": "Email de la reserva",
+                                            "nullable": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/reservas/reserva/{email_cliente}": {
+            "get": {
+                "tags": [
+                    "Reserva"
+                ],
+                "summary": "Buscar reserva por email del cliente",
+                "description": "Retorna una reserva",
+                "operationId": "eb9632714b93b250adecd2a2abeccec3",
+                "parameters": [
+                    {
+                        "name": "email_cliente",
+                        "in": "path",
+                        "description": "email de la reserva a buscar",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Reserva encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "email": {
+                                                "type": "string",
+                                                "maxLength": 50,
+                                                "example": "Email de la reserva",
+                                                "nullable": true
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No se encontro la reserva",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/reservas/reserva/{id}": {
+            "get": {
+                "tags": [
+                    "Reserva"
+                ],
+                "summary": "Mostrar los detalles de una reserva",
+                "description": "Retorna los detalles de una reserva",
+                "operationId": "fa6c34db9e516106f87624fcce1414f4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id de la reserva a buscar",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalles de la reserva encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "data": {
+                                                "type": "string",
+                                                "maxLength": 1000,
+                                                "example": "Detalles de la reserva",
+                                                "nullable": true
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No se encontro la Reserva",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehiulos": {
+            "get": {
+                "tags": [
+                    "Vehiculos"
+                ],
+                "summary": "Obtener lista de vehiculos",
+                "description": "Retorna una lista de todas los vehiculos en la base de datos",
+                "operationId": "0b9e7f30a8bf8c65f0ef3d7bc855e261",
+                "responses": {
+                    "200": {
+                        "description": "Lista de vehiculos encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "id_marca": {
+                                                "type": "integer",
+                                                "example": "99"
+                                            },
+                                            "modelo": {
+                                                "type": "integer",
+                                                "example": "2010"
+                                            },
+                                            "precio": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "disponible": {
+                                                "type": "boolean",
+                                                "example": true
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehiculos/show/{id}": {
+            "get": {
+                "tags": [
+                    "Vehiculos"
+                ],
+                "summary": "Obtener un vehiculo por id",
+                "description": "Renorna los detalles de un vehiculo",
+                "operationId": "719d045fc13b96101c054f7526251e4d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del vehiculo",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalles del vehiculo con id seleccionado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "id_marca": {
+                                            "type": "integer",
+                                            "example": "99"
+                                        },
+                                        "modelo": {
+                                            "type": "integer",
+                                            "example": "2010"
+                                        },
+                                        "precio": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "disponible": {
+                                            "type": "boolean",
+                                            "example": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehiculos/vehiculo/{id_marca}": {
+            "get": {
+                "tags": [
+                    "Vehiculos"
+                ],
+                "summary": "Buscar vehiculo por id de una marca",
+                "description": "Retorna un vehiculo",
+                "operationId": "2105ec78ee054e6a77ca26c7360c597b",
+                "parameters": [
+                    {
+                        "name": "idMarca",
+                        "in": "path",
+                        "description": "id de la marca relacionada al vehiculo a buscar",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Marca encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "vehiculo": {
+                                                "type": "string",
+                                                "maxLength": 50,
+                                                "example": "id de una Marca",
+                                                "nullable": true
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No se encontro la marca del vehiculo",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehiculos/vehiculo/{modelo}": {
+            "get": {
+                "tags": [
+                    "Vehiculos"
+                ],
+                "summary": "Buscar vehiculo por modelo",
+                "description": "Retorna un vehiculo",
+                "operationId": "e3569ca0974fe4319e08e65f140df06d",
+                "parameters": [
+                    {
+                        "name": "modelo",
+                        "in": "path",
+                        "description": "Modelo del vehiculo a buscar",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Modelo encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "modelo": {
+                                                "type": "string",
+                                                "maxLength": 50,
+                                                "example": "Modelo de un vehiculo",
+                                                "nullable": true
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No se encontro el modelo",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "responses": {
+            "400": {
+                "description": "Marca no encontrada",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "error": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "402": {
+                "description": "Reserva no encontrada",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "error": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "404": {
+                "description": "Vehiculo no encontrado",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "error": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
