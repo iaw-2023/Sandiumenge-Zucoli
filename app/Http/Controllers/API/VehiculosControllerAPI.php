@@ -6,11 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Vehiculo;
 
-/**
- * Class VehiculosControllerAPI.
- *
- * @author  AI-Avengers-IAW 
- */
 class VehiculosControllerAPI extends Controller
 {
     /**

@@ -6,11 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Marca;
 
-/**
- * Class MarcasControllerAPI.
- *
- * @author  AI-Avengers-IAW 
- */
 class MarcasControllerAPI extends Controller
 {
     /**

@@ -7,11 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Reserva;
 use App\Models\ReservaDetalles;
 
-/**
- * Class ReservasControllerAPI.
- *
- * @author  AI-Avengers-IAW 
- */
 class ReservasControllerAPI extends Controller
 {
     /**
