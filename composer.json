@@ -15,9 +15,6 @@
         "twbs/bootstrap": "^5.2"
     },
     "require-dev": {
-        "laravel/breeze": "^1.20",
-        "laravel/pint": "^1.0",
-        "laravel/sail": "^1.18"
     },
     "autoload": {
         "psr-4": {
