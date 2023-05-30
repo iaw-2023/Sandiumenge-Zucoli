@@ -2,8 +2,7 @@
     "version": 2,
     "functions": {
         "api/index.php": { 
-            "runtime": "vercel-php@0.6.0",
-            "excludeFiles": "{public,.next,pages,images,_next,gen}/**"
+            "runtime": "vercel-php@0.6.0"
         }
     },
     "routes": [
