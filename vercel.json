@@ -17,6 +17,10 @@
         {
             "source": "/api/vehiculos",
             "destination": "/api/vehiculos"
+        },
+        {
+            "source": "/api/marcas",
+            "destination": "/api/marcas"
         }
     ],
     "env": {
