@@ -7,20 +7,16 @@
     },
     "routes": [
         {
+            "src":"/rest/(.*)",
+            "dest":"/rest/(.*)"
+        },
+        {
             "src": "/build/(.*)",
             "dest": "/build/$1"
         },
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
-        },
-        {
-            "source": "/api/vehiculos",
-            "destination": "/api/vehiculos"
-        },
-        {
-            "source": "/api/marcas",
-            "destination": "/api/marcas"
         }
     ],
     "env": {
