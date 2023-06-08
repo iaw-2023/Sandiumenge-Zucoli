@@ -12,7 +12,7 @@
                     {{ __("You're logged in!") }}
                 </div>
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <a href="home">Home DreamCar</a>
+                    <a href="home">Home DreamCar (icono)</a>
                 </div>
             </div>
         </div>
