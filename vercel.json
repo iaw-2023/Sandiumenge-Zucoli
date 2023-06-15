@@ -6,6 +6,9 @@
         }
     },
     "routes": [
+        {   "src": "/images/(.*)",
+            "dest": "/images/$1"
+        },
         {
             "src": "/build/(.*)",
             "dest": "/build/$1"
