@@ -6,7 +6,7 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/api/marcas": {
+        "/rest/marcas": {
             "get": {
                 "tags": [
                     "Marcas"
@@ -43,7 +43,7 @@
                 }
             }
         },
-        "/api/marcas/show/{id}": {
+        "/rest/marcas/show/{id}": {
             "get": {
                 "tags": [
                     "Marcas"
@@ -88,7 +88,7 @@
                 }
             }
         },
-        "/api/marcas/marca/{marca}": {
+        "/rest/marcas/marca/{marca}": {
             "get": {
                 "tags": [
                     "Marcas"
@@ -147,7 +147,7 @@
                 }
             }
         },
-        "/api/reservas": {
+        "/rest/reservas": {
             "get": {
                 "tags": [
                     "Reservas"
@@ -194,7 +194,7 @@
                 }
             }
         },
-        "/api/reservas/show/{id}": {
+        "/rest/reservas/show/{id}": {
             "get": {
                 "tags": [
                     "Reservas"
@@ -239,7 +239,7 @@
                 }
             }
         },
-        "/api/reservas/reserva/{email_cliente}": {
+        "/rest/reservas/reserva/{email_cliente}": {
             "get": {
                 "tags": [
                     "Reserva"
@@ -298,7 +298,7 @@
                 }
             }
         },
-        "/api/reservas/reserva/{id}": {
+        "/rest/reservas/reserva/{id}": {
             "get": {
                 "tags": [
                     "Reserva"
@@ -357,7 +357,7 @@
                 }
             }
         },
-        "/api/vehiulos": {
+        "/rest/vehiulos": {
             "get": {
                 "tags": [
                     "Vehiculos"
@@ -404,7 +404,7 @@
                 }
             }
         },
-        "/api/vehiculos/show/{id}": {
+        "/rest/vehiculos/show/{id}": {
             "get": {
                 "tags": [
                     "Vehiculos"
@@ -459,7 +459,7 @@
                 }
             }
         },
-        "/api/vehiculos/vehiculo/{id_marca}": {
+        "/rest/vehiculos/vehiculo/{id_marca}": {
             "get": {
                 "tags": [
                     "Vehiculos"
@@ -518,7 +518,7 @@
                 }
             }
         },
-        "/api/vehiculos/vehiculo/{modelo}": {
+        "/rest/vehiculos/vehiculo/{modelo}": {
             "get": {
                 "tags": [
                     "Vehiculos"
