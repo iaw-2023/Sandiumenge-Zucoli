@@ -10,7 +10,7 @@ class MarcasControllerAPI extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/marcas",
+     *     path="/rest/marcas",
      *     summary="Obtener lista de marcas",
      *     description="Retorna una lista de todas las marcas en la base de datos",
      *     tags={"Marcas"},
@@ -35,7 +35,7 @@ class MarcasControllerAPI extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/marcas/show/{id}",
+     *     path="/rest/marcas/show/{id}",
      *     summary="Obtener una marcas por id",
      *     description="Renorna los detalles de una marca",
      *     tags={"Marcas"},
@@ -77,7 +77,7 @@ class MarcasControllerAPI extends Controller
 
      /**
      * @OA\Get(
-     *     path="/api/marcas/marca/{marca}",
+     *     path="/rest/marcas/marca/{marca}",
      *     summary="Buscar marca por nombre",
      *     description="Retorna una marca",
      *     tags={"Marcas"},

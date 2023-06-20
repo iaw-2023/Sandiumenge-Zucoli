@@ -11,7 +11,7 @@ class ReservasControllerAPI extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/reservas",
+     *     path="/rest/reservas",
      *     summary="Obtener lista de reservas",
      *     description="Retorna una lista de todas las reservas en la base de datos",
      *     tags={"Reservas"},
@@ -38,7 +38,7 @@ class ReservasControllerAPI extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/reservas/show/{id}",
+     *     path="/rest/reservas/show/{id}",
      *     summary="Obtener una reserva por id",
      *     description="Renorna los detalles de una reserva",
      *     tags={"Reservas"},
@@ -80,7 +80,7 @@ class ReservasControllerAPI extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/reservas/reserva/{email_cliente}",
+     *     path="/rest/reservas/reserva/{email_cliente}",
      *     summary="Buscar reserva por email del cliente",
      *     description="Retorna una reserva",
      *     tags={"Reserva"},
@@ -123,7 +123,7 @@ class ReservasControllerAPI extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/reservas/reserva/{id}",
+     *     path="/rest/reservas/reserva/{id}",
      *     summary="Mostrar los detalles de una reserva",
      *     description="Retorna los detalles de una reserva",
      *     tags={"Reserva"},

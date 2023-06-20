@@ -10,7 +10,7 @@ class VehiculosControllerAPI extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/vehiulos",
+     *     path="/rest/vehiulos",
      *     summary="Obtener lista de vehiculos",
      *     description="Retorna una lista de todas los vehiculos en la base de datos",
      *     tags={"Vehiculos"},
@@ -38,7 +38,7 @@ class VehiculosControllerAPI extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/vehiculos/show/{id}",
+     *     path="/rest/vehiculos/show/{id}",
      *     summary="Obtener un vehiculo por id",
      *     description="Renorna los detalles de un vehiculo",
      *     tags={"Vehiculos"},
@@ -83,7 +83,7 @@ class VehiculosControllerAPI extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/vehiculos/vehiculo/{id_marca}",
+     *     path="/rest/vehiculos/vehiculo/{id_marca}",
      *     summary="Buscar vehiculo por id de una marca",
      *     description="Retorna un vehiculo",
      *     tags={"Vehiculos"},
@@ -126,7 +126,7 @@ class VehiculosControllerAPI extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/vehiculos/vehiculo/{modelo}",
+     *     path="/rest/vehiculos/vehiculo/{modelo}",
      *     summary="Buscar vehiculo por modelo",
      *     description="Retorna un vehiculo",
      *     tags={"Vehiculos"},
