@@ -9,9 +9,9 @@
     <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">PRECIO</th>
             <th scope="col">ID RESERVA</th>
             <th scope="col">ID VEHICULO</th>
+            <th scope="col">PRECIO</th>
             <th scope="col">ACCIONES</th>
         </tr>
     </thead>
@@ -19,9 +19,9 @@
         @foreach ($reservasD as $reservaD)
         <tr>
             <td>{{ $reservaD->id }}</td>
-            <td>{{ $reservaD->precio }}</td>
             <td>{{ $reservaD->id_reserva }}</td>
             <td>{{ $reservaD->id_vehiculo }}</td>
+            <td>{{ $reservaD->precio }}</td>
             <td>
                 <form action="{{ route('reservasDetalle.destroy',$reservaD->id) }}" method='POST'>
                     <a href="/reservasDetalle/{{ $reservaD->id }}/edit" class="btn btn-info">EDITAR</a>

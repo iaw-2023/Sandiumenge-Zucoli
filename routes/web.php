@@ -16,11 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/home', function () {
     return view('/home');
-})->name('home');
+})->middleware(['auth', 'verified'])->name('home');
+
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

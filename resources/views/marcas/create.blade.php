@@ -4,12 +4,24 @@
 @section('contenido')
 <h2>CREAR REGISTRO</h2>
 
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <form action="/marcas" method="POST">
     @csrf <!-- directiva para el submit que nos crea un token oculto-->
-    <div class="mb-3">
-        <label for="" class="form-label">ID</label>
-        <input id="id" name="id" type="text" class="form-control" tabindex="1">
-    </div>
     <div class="mb-3">
         <label for="" class="form-label">MARCA</label>
         <input id="marca" name="marca" type="text" class="form-control" tabindex="2">

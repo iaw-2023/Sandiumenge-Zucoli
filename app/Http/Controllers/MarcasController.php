@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Marca;
+use App\Models\Vehiculo;
 
 class MarcasController extends Controller
 {
@@ -12,7 +13,7 @@ class MarcasController extends Controller
      */
     public function index()
     {
-        $marcas = Marca::all(); //trae todos los registros de la tabla
+        $marcas = Marca::all();
         return view('marcas.index')->with('marcas',$marcas);
     }
 
@@ -29,14 +30,22 @@ class MarcasController extends Controller
      */
     public function store(Request $request)
     {
-        $marcas = new Marca(); //crea un nuevo objecto de tipo Marca 
+        $request->validate([
+            'marca' => 'required|min:3|max:255',
+        ], [
+            'marca.required' => 'El campo marca es obligatorio',
+        ]);
 
-        $marcas->id = $request->get('id');
+        $marcas = new Marca(); 
+
         $marcas->marca = $request->get('marca');
+        do {
+            $randomId = mt_rand(100000, 999999); 
+        } while (Marca::where('id', $randomId)->exists());
+        $marcas->id = $randomId;
 
         $marcas->save();
-
-        return redirect('/marcas');
+        return redirect('/marcas')->with('success', 'Marca creada exitosamente');
     }
 
     /**
@@ -67,6 +76,14 @@ class MarcasController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'marca' => 'required|min:3|max:255',
+            'id' => 'required|min:1|max:255'
+        ], [
+            'marca.required' => 'El campo marca es obligatorio',
+            'id.required' => 'El campo ID es obligatorio'
+        ]);
+
         $marca = Marca::find($id);
 
         $marca->id = $request->get('id');
@@ -83,9 +100,21 @@ class MarcasController extends Controller
     public function destroy(string $id)
     {
         $marca = Marca::find($id);
-
+        dd($marca->id);//TODO error: llega siempre la primer marca
+        if($this->vehiculoAsociado($marca)){
+            session()->flash('error', 'No se puede borrar una marca asociada a un vehiculo');
+            return redirect()->back();
+        }
+        
         $marca->delete();
-
+        session()->flash('success', 'Se elimino la marca');
         return redirect('/marcas');
+    }
+
+    private function vehiculoAsociado($marca)
+    {
+        //dd($marca->id);
+        $existe = Vehiculo::where('id_marca', $marca->id)->exists();
+        return $existe;
     }
 }

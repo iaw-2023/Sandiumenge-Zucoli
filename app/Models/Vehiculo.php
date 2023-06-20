@@ -14,4 +14,9 @@ class Vehiculo extends Model
         'patente',
         'precio',
     ];
+
+    public function getMarcaAsociada()
+    {
+        return $this->hasOne(Marca::class, 'marca');
+    }
 }

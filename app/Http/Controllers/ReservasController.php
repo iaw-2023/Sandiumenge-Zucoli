@@ -29,9 +29,18 @@ class ReservasController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'email' => 'required|min:3|max:255',
+        ], [
+            'email.required' => 'El campo email es obligatorio',
+        ]);
         $reservas = new Reserva();
 
-        $reservas->id = $request->get('id');
+        do {
+            $randomId = mt_rand(100000, 999999); 
+        } while (Marca::where('id', $randomId)->exists());
+        $reservas->id = $randomId;
+
         $reservas->email = $request->get('email');
 
         $reservas->save();

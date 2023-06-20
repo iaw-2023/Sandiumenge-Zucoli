@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vehiculo;
+use App\Models\ReservaDetalles;
+use App\Models\Marca;
 
 class VehiculosController extends Controller
 {
@@ -12,7 +14,7 @@ class VehiculosController extends Controller
      */
     public function index()
     {
-        $vehiculos = Vehiculo::all(); //trae todos los registros de la tabla
+        $vehiculos = Vehiculo::all();
         return view('vehiculos.index')->with('vehiculos',$vehiculos);
     }
 
@@ -21,7 +23,8 @@ class VehiculosController extends Controller
      */
     public function create()
     {
-        return view('vehiculos.create');
+        $marcas = Marca::all();
+        return view('vehiculos.create', compact('marcas'));
     }
 
     /**
@@ -29,9 +32,23 @@ class VehiculosController extends Controller
      */
     public function store(Request $request)
     {
-        $vehiculos = new Vehiculo(); //crea un nuevo objecto de tipo vehiculo 
+        $request->validate([
+            'modelo' => 'required|min:3|max:255',
+            'precio' => 'required|min:3|max:255',
+            'disponible' => 'required|min:0|max:1',
+        ], [
+            'modelo.required' => 'El campo modelo es obligatorio',
+            'precio.required' => 'El campo precio es obligatorio',
+            'disponible.required' => 'El campo disponible es obligatorio',
+        ]);
 
-        $vehiculos->id = $request->get('id');
+        $vehiculos = new Vehiculo(); 
+
+        do {
+            $randomId = mt_rand(100000, 999999); 
+        } while (Vehiculo::where('id', $randomId)->exists());
+        $vehiculos->id = $randomId;
+        
         $vehiculos->id_marca = $request->get('id_marca');
         $vehiculos->modelo = $request->get('modelo');
         $vehiculos->precio = $request->get('precio');
@@ -88,10 +105,22 @@ class VehiculosController extends Controller
      */
     public function destroy(string $id)
     {
-        $vehiculo = Vehiculo::find($id);
+        $vehiculo = Vehiculo::findOrFail($id);
+
+        if($this->reservaAsociada($vehiculo)){
+            session()->flash('error', 'No se puede borrar un Vehiuclo asociado a una Reserva');
+            return redirect()->back();
+        }
 
         $vehiculo->delete();
-
+        session()->flash('success', 'Se elimino el Vehiculo');
         return redirect('/vehiculos');
+    }
+
+    private function reservaAsociada($vehiculo)
+    {
+        //dd($vehiculo->id);
+        $existe= ReservaDetalles::where('id_vehiculo', $vehiculo->id)->exists();
+        return $existe;
     }
 }
