@@ -1,6 +1,7 @@
 @extends('layouts.plantillabase')
 
 <title>DreamCar | Marcas</title>
+
 @section('contenido')
 <a href="/home" class="btn btn-primary">HOME</a>
 <a href="marcas/create" class="btn btn-primary">AGREGAR MARCA</a>
@@ -18,6 +19,7 @@
             <th scope="col">ID</th>
             <th scope="col">MARCA</th>
             <th scope="col">ACCIONES</th>
+            <th scope="col"> </th>
         </tr>
     </thead>
     <tbody>
@@ -25,14 +27,16 @@
         <tr>
             <td>{{ $marca->id }}</td>
             <td>{{ $marca->marca }}</td>
+            <td><a href="{{ route('marcas.edit', $marca) }}" class="btn btn-info">EDITAR</a></td>
             <td>
-                <form action="{{ route('marcas.destroy', $marca->id) }}" method='POST'>
-                    <a href="/marcas/{{ $marca->id }}/edit" class="btn btn-info">EDITAR</a>
+                <!--<a href="{{ route('marcas.destroy', $marca->id) }}" class="btn btn-danger">BORRAR</a> -->
+                <form action="/marcas/{{$marca->id}}" method='POST'>
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">BORRAR</button>
-                <form>
+                    <input type="submit" class="btn btn-danger" value="BORRAR">
+                </form>
             </td>
+                <!--<form action="{{ route('marcas.destroy', $marca->id) }}" method='POST'> -->
         </tr>
         @endforeach
     </tbody>

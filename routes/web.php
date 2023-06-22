@@ -18,11 +18,9 @@ Route::get('/home', function () {
     return view('/home');
 })->middleware(['auth', 'verified'])->name('home');
 
-
 Route::get('/', function () {
     return view('auth/login');
 });
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -37,6 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('vehiculos', 'App\Http\Controllers\VehiculosController');
     Route::resource('reservas', 'App\Http\Controllers\ReservasController');
     Route::resource('reservasDetalle', 'App\Http\Controllers\ReservasDetallesController');
+
+    //Route::delete('/marcas/{id}', [MarcasController::class, 'destroy'])->name('marcas.destroy');
+    //Route::delete('/vehiculos/{id}', [VehiculosController::class, 'destroy']);
 });
 
 require __DIR__.'/auth.php';

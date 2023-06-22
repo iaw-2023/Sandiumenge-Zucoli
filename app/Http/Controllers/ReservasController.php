@@ -37,11 +37,22 @@ class ReservasController extends Controller
         $reservas = new Reserva();
 
         do {
-            $randomId = mt_rand(100000, 999999); 
-        } while (Marca::where('id', $randomId)->exists());
+            $randomId = mt_rand(1, 999999); 
+        } while (Reserva::where('id', $randomId)->exists());
         $reservas->id = $randomId;
 
         $reservas->email = $request->get('email');
+
+        $anioInicio = rand(2022, 2023);
+        $mesInicio = rand(1, 12);
+        $diaInicio = rand(1, 28);
+        $duracion = rand(1, 7); // La reserva tendrá una duración de 1 a 7 días
+        $fechaInicio = date("Y-m-d", strtotime("$anioInicio-$mesInicio-$diaInicio"));
+        $fechaFinal = date("Y-m-d", strtotime("$fechaInicio +$duracion day"));
+    
+        $reservas->email = $request->get('email');
+        $reservas->fecha_inicio = $fechaInicio;
+        $reservas->fecha_final = $fechaFinal;
 
         $reservas->save();
 

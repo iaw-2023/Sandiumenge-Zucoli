@@ -40,7 +40,7 @@ class MarcasController extends Controller
 
         $marcas->marca = $request->get('marca');
         do {
-            $randomId = mt_rand(100000, 999999); 
+            $randomId = mt_rand(1, 999999); 
         } while (Marca::where('id', $randomId)->exists());
         $marcas->id = $randomId;
 
@@ -53,8 +53,8 @@ class MarcasController extends Controller
      */
     public function show(string $id)
     {
-        $marca = Marca::with('marca')->find($id);
-
+        //$marca = Marca::with('marca')->find($id);
+        $marca = Marca::findOrFail($id);
         if (!$marca) {
             return response()->json(['error' => 'No existe la Marca'], 404);
         }
@@ -98,9 +98,9 @@ class MarcasController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        $marca = Marca::find($id);
-        dd($marca->id);//TODO error: llega siempre la primer marca
+    {   
+        $marca = Marca::findOrFail($id);
+        //dd($marca->id);//TODO error: llega siempre la primer marca
         if($this->vehiculoAsociado($marca)){
             session()->flash('error', 'No se puede borrar una marca asociada a un vehiculo');
             return redirect()->back();
