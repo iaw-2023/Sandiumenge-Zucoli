@@ -111,8 +111,6 @@ class MarcasController extends Controller
 
     private function vehiculoAsociado($marca)
     {
-        //dd($marca->id);
-        $existe = Vehiculo::where('id_marca', $marca->id)->exists();
-        return $existe;
+        return Vehiculo::where('id_marca', $marca->id)->exists();
     }
 }

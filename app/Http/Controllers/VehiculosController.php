@@ -121,19 +121,17 @@ class VehiculosController extends Controller
     {
         $vehiculo = Vehiculo::findOrFail($id);
         if($this->reservaAsociada($vehiculo)){
-            session()->flash('error', 'No se puede borrar un Vehiuclo asociado a una Reserva');
+            session()->flash('error', 'No se puede borrar un vehiuclo asociado a una reserva');
             return redirect()->back();
         }
 
         $vehiculo->delete();
-        session()->flash('success', 'Se elimino el Vehiculo');
+        session()->flash('success', 'Se elimino el vehiculo');
         return redirect('/vehiculos');
     }
 
     private function reservaAsociada($vehiculo)
     {
-        //dd($vehiculo->id);
-        $existe= ReservaDetalles::where('id_vehiculo', $vehiculo->id)->exists();
-        return $existe;
+        return ReservaDetalles::where('id_vehiculo', $vehiculo->id)->exists();
     }
 }
