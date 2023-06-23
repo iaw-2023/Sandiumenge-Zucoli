@@ -36,10 +36,12 @@ class VehiculosController extends Controller
             'modelo' => 'required|min:3|max:255',
             'precio' => 'required|min:3|max:255',
             'disponible' => 'required|min:0|max:1',
+            'disponible' => 'required|in:0,1',
         ], [
             'modelo.required' => 'El campo modelo es obligatorio',
             'precio.required' => 'El campo precio es obligatorio',
             'disponible.required' => 'El campo disponible es obligatorio (0 o 1)',
+            'disponible.in' => 'El campo disponible debe ser 0 o 1',
         ]);
 
         $vehiculos = new Vehiculo(); 
@@ -87,6 +89,18 @@ class VehiculosController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'modelo' => 'required|min:3|max:255',
+            'precio' => 'required|min:3|max:255',
+            'disponible' => 'required|min:0|max:1',
+            'disponible' => 'required|in:0,1',
+        ], [
+            'modelo.required' => 'El campo modelo es obligatorio',
+            'precio.required' => 'El campo precio es obligatorio',
+            'disponible.required' => 'El campo disponible es obligatorio (0 o 1)',
+            'disponible.in' => 'El campo disponible debe ser 0 o 1',
+        ]);
+
         $vehiculo = Vehiculo::find($id);
 
         $vehiculo->id = $request->get('id');
@@ -106,7 +120,6 @@ class VehiculosController extends Controller
     public function destroy(string $id)
     {
         $vehiculo = Vehiculo::findOrFail($id);
-        dd($vehiculo->id);
         if($this->reservaAsociada($vehiculo)){
             session()->flash('error', 'No se puede borrar un Vehiuclo asociado a una Reserva');
             return redirect()->back();

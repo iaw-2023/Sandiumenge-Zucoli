@@ -10,7 +10,8 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">EMAIL</th>
-            <th scope="col">ACCIONES</th>
+            <th scope="col"> </th>
+            <th scope="col"> </th>
         </tr>
     </thead>
     <tbody>
@@ -18,9 +19,9 @@
         <tr>
             <td>{{ $reserva->id }}</td>
             <td>{{ $reserva->email }}</td>
+            <td><a href="/reservas/{{ $reserva->id }}/edit" class="btn btn-info">EDITAR</a></td>
             <td>
                 <form action="{{ route('reservas.destroy',$reserva->id) }}" method='POST'>
-                    <a href="/reservas/{{ $reserva->id }}/edit" class="btn btn-info">EDITAR</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">BORRAR</button>

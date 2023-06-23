@@ -13,6 +13,7 @@
             <th scope="col">ID VEHICULO</th>
             <th scope="col">PRECIO</th>
             <th scope="col">ACCIONES</th>
+            <th scope="col"> </th>
         </tr>
     </thead>
     <tbody>
@@ -24,12 +25,12 @@
             <td>{{ $reservaD->precio }}</td>
             <td>
                 <form action="{{ route('reservasDetalle.destroy',$reservaD->id) }}" method='POST'>
-                    <a href="/reservasDetalle/{{ $reservaD->id }}/edit" class="btn btn-info">EDITAR</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">BORRAR</button>
                 </form>
             </td>
+            <td><a href="/reservasDetalle/{{ $reservaD->id }}/edit" class="btn btn-info">EDITAR</a></td>
         </tr>
         @endforeach
     </tbody>

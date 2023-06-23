@@ -38,7 +38,7 @@
         <input id="precio" name="precio" type="number" step="any" value="0" class="form-control" tabindex="4">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">DISPONIBLE</label>
+        <label for="" class="form-label">DISPONIBLE (0 o 1)</label>
         <input id="disponible" name="disponible" type="text" class="form-control" tabindex="5">
     </div>
     

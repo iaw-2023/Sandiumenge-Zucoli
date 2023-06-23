@@ -36,8 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('reservas', 'App\Http\Controllers\ReservasController');
     Route::resource('reservasDetalle', 'App\Http\Controllers\ReservasDetallesController');
 
-    //Route::delete('/marcas/{id}', [MarcasController::class, 'destroy'])->name('marcas.destroy');
-    //Route::delete('/vehiculos/{id}', [VehiculosController::class, 'destroy']);
+    Route::get('reservasDetalle/{id}/detalle', 'ReservaDetalleController@detalle')->name('reservasDetalle.detalle');
+
 });
 
 require __DIR__.'/auth.php';

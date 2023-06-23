@@ -29,14 +29,12 @@
             <td>{{ $marca->marca }}</td>
             <td><a href="{{ route('marcas.edit', $marca) }}" class="btn btn-info">EDITAR</a></td>
             <td>
-                <!--<a href="{{ route('marcas.destroy', $marca->id) }}" class="btn btn-danger">BORRAR</a> -->
                 <form action="/marcas/{{$marca->id}}" method='POST'>
                     @csrf
                     @method('DELETE')
                     <input type="submit" class="btn btn-danger" value="BORRAR">
                 </form>
             </td>
-                <!--<form action="{{ route('marcas.destroy', $marca->id) }}" method='POST'> -->
         </tr>
         @endforeach
     </tbody>

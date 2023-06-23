@@ -53,8 +53,7 @@ class MarcasController extends Controller
      */
     public function show(string $id)
     {
-        //$marca = Marca::with('marca')->find($id);
-        $marca = Marca::findOrFail($id);
+        $marca = Marca::with('marca')->find($id);
         if (!$marca) {
             return response()->json(['error' => 'No existe la Marca'], 404);
         }
@@ -100,7 +99,6 @@ class MarcasController extends Controller
     public function destroy(string $id)
     {   
         $marca = Marca::findOrFail($id);
-        //dd($marca->id);//TODO error: llega siempre la primer marca
         if($this->vehiculoAsociado($marca)){
             session()->flash('error', 'No se puede borrar una marca asociada a un vehiculo');
             return redirect()->back();
