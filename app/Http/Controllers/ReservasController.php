@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reserva;
+use App\Models\Marca;
 
 class ReservasController extends Controller
 {
@@ -73,7 +74,8 @@ class ReservasController extends Controller
     public function edit(string $id)
     {
         $reserva = Reserva::find($id);
-        return view('reservas.edit')->with('reserva',$reserva);
+        $marcas = Marca::all();
+        return view('reservas.edit')->with(['reserva' => $reserva, 'marcas' => $marcas]);
     }
 
     /**

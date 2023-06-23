@@ -14,6 +14,14 @@
         <label for="" class="form-label">EMAIL</label>
         <input id="email" name="email" value="{{$reserva->email}}" type="text" class="form-control" tabindex="2">
     </div>
+    <div class="mb-3">
+        <label for="" class="form-label">VEHICULO</label>
+        <select name="id_marca" id="id_marca" class="form-control">
+             @foreach($marcas as $marca)
+                 <option value="{{ $marca->id }}">{{ $marca->marca }}</option>
+             @endforeach
+        </select>
+    </div>
     
     <div>
         <a href="/reservas" class="btn btn-secondary" tabindex="3">CANCELAR</a>
