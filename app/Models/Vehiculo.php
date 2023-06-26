@@ -15,8 +15,8 @@ class Vehiculo extends Model
         'precio',
     ];
 
-    public function getMarcaAsociada()
+    public function marca()
     {
-        return $this->hasOne(Marca::class, 'marca');
+        return $this->belongsTo(Marca::class, 'id_marca');
     }
 }

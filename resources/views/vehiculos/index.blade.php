@@ -16,7 +16,7 @@
     <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">ID MARCA</th>
+            <th scope="col">MARCA</th>
             <th scope="col">MODELO</th>
             <th scope="col">PRECIO</th>
             <th scope="col">DISPONIBLE</th>
@@ -27,7 +27,7 @@
         @foreach ($vehiculos as $vehiculo)
         <tr>
             <td>{{ $vehiculo->id }}</td>
-            <td>{{ $vehiculo->id_marca }}</td>
+            <td>{{ $vehiculo->marca->marca }}</td>
             <td>{{ $vehiculo->modelo }}</td>
             <td>{{ $vehiculo->precio }}</td>
             <td>{{ $vehiculo->disponible }}</td>

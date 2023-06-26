@@ -19,7 +19,7 @@
 @endif
 
 <form action="/vehiculos" method="POST">
-    @csrf <!-- directiva para el submit que nos crea un token oculto-->
+    @csrf
     <div class="mb-3">
         <label for="id_marca" class="form-label">NOMBRE MARCA</label>
         <select name="id_marca" id="id_marca" class="form-control">
@@ -27,7 +27,6 @@
                  <option value="{{ $marca->id }}">{{ $marca->marca }}</option>
              @endforeach
         </select>
-        <!--<input id="id_marca" name="id_marca" type="text" class="form-control" tabindex="2">-->
     </div>
     <div class="mb-3">
         <label for="" class="form-label">MODELO</label>
