@@ -15,7 +15,6 @@ use App\Http\Controllers\API\ReservasControllerAPI;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "api" middleware group. Make something great!
 |
-|       Se accede mediante localhost/api/...
 */
 
 Route::get('/marcas', [MarcasControllerAPI::class, 'index']);
@@ -31,7 +30,9 @@ Route::get('/reservas', [ReservasControllerAPI::class, 'index']);
 Route::get('/reservas/show/{id}', [ReservasControllerAPI::class, 'show']);
 Route::get('/reservas/reserva/{id}', [ReservasControllerAPI::class, 'mostrarDetalles']);
 Route::get('/reservas/reserva/{email_cliente}', [ReservasControllerAPI::class, 'buscarPorMail']);
+Route::post('/reservas/crearReserva/{email_cliente}', [ReservasControllerAPI::class, 'crearReserva']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+

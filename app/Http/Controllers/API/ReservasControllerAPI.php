@@ -171,6 +171,54 @@ class ReservasControllerAPI extends Controller
         ];
         return response()->json($data);
     }
+
+    /**
+     * @OA\Post(
+     *     path="/reservas/crearReserva/{email_cliente}",
+     *     summary="Crear reserva",
+     *     description="Crea una nueva reserva en base a un email de un cliente",
+     *     tags={"Reserva"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="email", type="string", example=example@host.com)
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Reserva creada con exito.",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(
+     *                 @OA\Property(property="id", type="integer", example="1"),
+     *                @OA\Property(property="email", type="string", example=example@host.com)
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Error al crear la reserva"
+     *     )
+     * )
+     */
+    public function crearReserva(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|min:3|max:255',
+        ], [
+            'email.required' => 'El campo email es obligatorio',
+        ]);
+
+        $reserva = new Reserva();
+        do {
+            $randomId = mt_rand(1, 999999); 
+        } while (Reserva::where('id', $randomId)->exists());
+        $reservas->id = $randomId;
+        $reserva->email = $request->get('email_cliente');
+        $reserva->save();
+
+        return response()->json(['mensaje' => 'Reserva creada correctamente'], 200);
+    }
 }
 
 ?>
