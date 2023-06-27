@@ -117,7 +117,7 @@ class VehiculosControllerAPI extends Controller
      */
     public function buscarVehiculoPorMarca(int $idMarca)
     {
-        $vehiculo = Turno::where('id_marca', $idMarca)->get();
+        $vehiculo = Marca::where('id_marca', $idMarca)->get();
         if(!$vehiculo){
             return response()->json(['error' => 'No existe la Marca'], 404);
         }
