@@ -10,7 +10,7 @@ class VehiculosControllerAPI extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/rest/vehiulos",
+     *     path="/rest/vehiculos",
      *     summary="Obtener lista de vehiculos",
      *     description="Retorna una lista de todas los vehiculos en la base de datos",
      *     tags={"Vehiculos"},

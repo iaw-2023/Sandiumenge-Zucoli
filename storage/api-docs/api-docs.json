@@ -419,14 +419,14 @@
                 }
             }
         },
-        "/rest/vehiulos": {
+        "/rest/vehiculos": {
             "get": {
                 "tags": [
                     "Vehiculos"
                 ],
                 "summary": "Obtener lista de vehiculos",
                 "description": "Retorna una lista de todas los vehiculos en la base de datos",
-                "operationId": "19346f83fc9882299539cf41f5c5e36b",
+                "operationId": "b4b6b9c9ee82f5e8689113277ac7bdd9",
                 "responses": {
                     "200": {
                         "description": "Lista de vehiculos encontrada",
