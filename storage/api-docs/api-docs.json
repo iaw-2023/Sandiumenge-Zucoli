@@ -13,7 +13,7 @@
                 ],
                 "summary": "Obtener lista de marcas",
                 "description": "Retorna una lista de todas las marcas en la base de datos",
-                "operationId": "c341c80c734843faa921821088a634e6",
+                "operationId": "2f66afd4178e98199b3ab5f542756a18",
                 "responses": {
                     "200": {
                         "description": "Lista de marcas encontrada",
@@ -50,7 +50,7 @@
                 ],
                 "summary": "Obtener una marcas por id",
                 "description": "Renorna los detalles de una marca",
-                "operationId": "4b10c8c6988d876ad72642e9a18ef6ce",
+                "operationId": "0e93ee7d9ecd6de01f092ef16e78b11c",
                 "parameters": [
                     {
                         "name": "id",
@@ -95,7 +95,7 @@
                 ],
                 "summary": "Buscar marca por nombre",
                 "description": "Retorna una marca",
-                "operationId": "97688254c60ea360308e75e3dd90f1c0",
+                "operationId": "d14b980f7e53cd97cf48c06544735456",
                 "parameters": [
                     {
                         "name": "marca",
@@ -154,7 +154,7 @@
                 ],
                 "summary": "Obtener lista de reservas",
                 "description": "Retorna una lista de todas las reservas en la base de datos",
-                "operationId": "0a259de14bd0e84b3fdaa1a5e1078908",
+                "operationId": "55992a320750a8e841c08fa4f23876c2",
                 "responses": {
                     "200": {
                         "description": "Lista de reservas encontrada",
@@ -177,12 +177,12 @@
                                             "fecha_inicio": {
                                                 "type": "string",
                                                 "format": "date",
-                                                "example": "18/05/2023"
+                                                "example": "18-05-2023"
                                             },
                                             "fecha_final": {
                                                 "type": "string",
                                                 "format": "date",
-                                                "example": "18/05/2024"
+                                                "example": "18-05-2024"
                                             }
                                         },
                                         "type": "object"
@@ -201,7 +201,7 @@
                 ],
                 "summary": "Obtener una reserva por id",
                 "description": "Renorna los detalles de una reserva",
-                "operationId": "c73e3697aaef74220acea5b4394ccdf5",
+                "operationId": "e18c6cbf036768051a8f747f57a4c93d",
                 "parameters": [
                     {
                         "name": "id",
@@ -246,7 +246,7 @@
                 ],
                 "summary": "Buscar reserva por email del cliente",
                 "description": "Retorna una reserva",
-                "operationId": "eb9632714b93b250adecd2a2abeccec3",
+                "operationId": "9ae85ebcee4289fe54cbe84b9a195b6a",
                 "parameters": [
                     {
                         "name": "email_cliente",
@@ -270,7 +270,7 @@
                                             "email": {
                                                 "type": "string",
                                                 "maxLength": 50,
-                                                "example": "Email de la reserva",
+                                                "example": "Reserva por email",
                                                 "nullable": true
                                             }
                                         },
@@ -305,7 +305,7 @@
                 ],
                 "summary": "Mostrar los detalles de una reserva",
                 "description": "Retorna los detalles de una reserva",
-                "operationId": "fa6c34db9e516106f87624fcce1414f4",
+                "operationId": "d707180d666f2baaaa7fc3eb3dd5f9d1",
                 "parameters": [
                     {
                         "name": "id",
@@ -357,6 +357,69 @@
                 }
             }
         },
+        "/rest/reservas/crearReserva": {
+            "post": {
+                "tags": [
+                    "Reserva"
+                ],
+                "summary": "Crear reserva",
+                "description": "Crea una nueva reserva en base a un email de un cliente",
+                "operationId": "c22c32bb354512cd7a3a6007dcfbe7a4",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "test@gmail.com"
+                                    },
+                                    "fecha_inicio": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "18-05-2023"
+                                    },
+                                    "fecha_final": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "18-05-2024"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Reserva creada con exito.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error al crear la reserva"
+                    }
+                }
+            }
+        },
         "/rest/vehiulos": {
             "get": {
                 "tags": [
@@ -364,7 +427,7 @@
                 ],
                 "summary": "Obtener lista de vehiculos",
                 "description": "Retorna una lista de todas los vehiculos en la base de datos",
-                "operationId": "0b9e7f30a8bf8c65f0ef3d7bc855e261",
+                "operationId": "19346f83fc9882299539cf41f5c5e36b",
                 "responses": {
                     "200": {
                         "description": "Lista de vehiculos encontrada",
@@ -411,7 +474,7 @@
                 ],
                 "summary": "Obtener un vehiculo por id",
                 "description": "Renorna los detalles de un vehiculo",
-                "operationId": "719d045fc13b96101c054f7526251e4d",
+                "operationId": "796a4253a51ad9ea5c413dd54eb18c31",
                 "parameters": [
                     {
                         "name": "id",
@@ -466,7 +529,7 @@
                 ],
                 "summary": "Buscar vehiculo por id de una marca",
                 "description": "Retorna un vehiculo",
-                "operationId": "2105ec78ee054e6a77ca26c7360c597b",
+                "operationId": "9299e1686c39bb78d98bbe9ae6baf939",
                 "parameters": [
                     {
                         "name": "idMarca",
@@ -525,7 +588,7 @@
                 ],
                 "summary": "Buscar vehiculo por modelo",
                 "description": "Retorna un vehiculo",
-                "operationId": "e3569ca0974fe4319e08e65f140df06d",
+                "operationId": "cc21824cc9b8c8ace6a3bd33e7264d15",
                 "parameters": [
                     {
                         "name": "modelo",

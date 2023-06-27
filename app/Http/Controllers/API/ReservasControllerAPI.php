@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Reserva;
 use App\Models\ReservaDetalles;
+use Illuminate\Support\Facades\Validator;
 
 class ReservasControllerAPI extends Controller
 {
@@ -23,8 +24,8 @@ class ReservasControllerAPI extends Controller
      *             @OA\Items(
      *                 @OA\Property(property="id", type="integer", example="1"),
      *                 @OA\Property(property="email", type="string", maxLength=50, nullable=true, example="Email de una reserva"),
-     *                 @OA\Property(property="fecha_inicio", type="string", format="date", example="18/05/2023"),
-     *                 @OA\Property(property="fecha_final", type="string", format="date", example="18/05/2024")
+     *                 @OA\Property(property="fecha_inicio", type="string", format="date", example="18-05-2023"),
+     *                 @OA\Property(property="fecha_final", type="string", format="date", example="18-05-2024")
      *             )
      *         )
      *     )
@@ -99,7 +100,7 @@ class ReservasControllerAPI extends Controller
      *          @OA\JsonContent(
      *             type="array",
      *             @OA\Items(
-     *                 @OA\Property(property="email", type="string", maxLength=50, nullable=true, example="Email de la reserva")
+     *                 @OA\Property(property="email", type="string", maxLength=50, nullable=true, example="Reserva por email")
      *             )
      *         )
      *     ),
@@ -113,12 +114,12 @@ class ReservasControllerAPI extends Controller
      * )
      */
     public function buscarPorMail(string $email_cliente)
-    {
-        $email = Reserva::where('email', $email_cliente)->get();
-        if (!$email) {
+    {   
+        $reserva = Reserva::where('email', $email_cliente)->get();
+        if (!$reserva) {
             return response()->json(['error' => 'No existe el Email'], 404);
         }
-        return response()->json($email); 
+        return response()->json($reserva); 
     }
 
     /**
@@ -174,14 +175,16 @@ class ReservasControllerAPI extends Controller
 
     /**
      * @OA\Post(
-     *     path="/reservas/crearReserva/{email_cliente}",
+     *     path="/rest/reservas/crearReserva",
      *     summary="Crear reserva",
      *     description="Crea una nueva reserva en base a un email de un cliente",
      *     tags={"Reserva"},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
-     *             @OA\Property(property="email", type="string", example=example@host.com)
+     *             @OA\Property(property="email", type="string", example="test@gmail.com"),
+     *             @OA\Property(property="fecha_inicio", type="string", format="date", example="18-05-2023"),
+     *             @OA\Property(property="fecha_final", type="string", format="date", example="18-05-2024")
      *         )
      *     ),
      *     @OA\Response(
@@ -190,8 +193,8 @@ class ReservasControllerAPI extends Controller
      *         @OA\JsonContent(
      *             type="array",
      *             @OA\Items(
-     *                 @OA\Property(property="id", type="integer", example="1"),
-     *                @OA\Property(property="email", type="string", example=example@host.com)
+     *                @OA\Property(property="id", type="integer", example="1"),
+     *                @OA\Property(property="email", type="string")
      *             )
      *         )
      *     ),
@@ -203,18 +206,23 @@ class ReservasControllerAPI extends Controller
      */
     public function crearReserva(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'email' => 'required|min:3|max:255',
+            'fecha_inicio' => 'required|date',
+            'fecha_final' => 'required|date|after:fecha_inicio',
         ], [
             'email.required' => 'El campo email es obligatorio',
+            'fecha_final.after' => 'La fecha de finalización debe ser posterior a la fecha de inicio',
         ]);
+    
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 400);
+        }
 
         $reserva = new Reserva();
-        do {
-            $randomId = mt_rand(1, 999999); 
-        } while (Reserva::where('id', $randomId)->exists());
-        $reservas->id = $randomId;
-        $reserva->email = $request->get('email_cliente');
+        $reserva->email = $request->input('email');
+        $reserva->fecha_inicio = $request->input('fecha_inicio');
+        $reserva->fecha_final = $request->input('fecha_final');
         $reserva->save();
 
         return response()->json(['mensaje' => 'Reserva creada correctamente'], 200);

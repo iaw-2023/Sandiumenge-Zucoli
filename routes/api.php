@@ -30,7 +30,7 @@ Route::get('/reservas', [ReservasControllerAPI::class, 'index']);
 Route::get('/reservas/show/{id}', [ReservasControllerAPI::class, 'show']);
 Route::get('/reservas/reserva/{id}', [ReservasControllerAPI::class, 'mostrarDetalles']);
 Route::get('/reservas/reserva/{email_cliente}', [ReservasControllerAPI::class, 'buscarPorMail']);
-Route::post('/reservas/crearReserva/{email_cliente}', [ReservasControllerAPI::class, 'crearReserva']);
+Route::post('/reservas/crearReserva', [ReservasControllerAPI::class, 'crearReserva']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
