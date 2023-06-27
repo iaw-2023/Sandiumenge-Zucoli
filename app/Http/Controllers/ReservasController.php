@@ -117,7 +117,7 @@ class ReservasController extends Controller
 
         $reserva->delete();
         session()->flash('success', 'Se elimino la reserva');
-        return redirect('/marcas');
+        return redirect('/reservas');
     }
 
     private function reservaDetalleAsociada($reserva)

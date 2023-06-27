@@ -378,12 +378,12 @@
                                     "fecha_inicio": {
                                         "type": "string",
                                         "format": "date",
-                                        "example": "18-05-2023"
+                                        "example": "2023-05-18"
                                     },
                                     "fecha_final": {
                                         "type": "string",
                                         "format": "date",
-                                        "example": "18-05-2024"
+                                        "example": "2024-05-18"
                                     },
                                     "vehiculos": {
                                         "type": "array",

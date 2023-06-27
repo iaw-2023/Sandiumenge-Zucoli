@@ -184,8 +184,8 @@ class ReservasControllerAPI extends Controller
      *         required=true,
      *         @OA\JsonContent(
      *             @OA\Property(property="email", type="string", example="test@gmail.com"),
-     *             @OA\Property(property="fecha_inicio", type="string", format="date", example="18-05-2023"),
-     *             @OA\Property(property="fecha_final", type="string", format="date", example="18-05-2024"),
+     *             @OA\Property(property="fecha_inicio", type="string", format="date", example="2023-05-18"),
+     *             @OA\Property(property="fecha_final", type="string", format="date", example="2024-05-18"),
      *             @OA\Property(property="vehiculos", type="array", @OA\Items(type="integer"))
      *         )
      *     ),
