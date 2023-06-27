@@ -393,23 +393,39 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Reserva creada con exito.",
+                        "description": "Reserva creada correctamente",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "properties": {
-                                            "id": {
-                                                "type": "integer",
-                                                "example": "1"
-                                            },
-                                            "email": {
-                                                "type": "string"
-                                            }
+                                    "properties": {
+                                        "mensaje": {
+                                            "type": "string"
                                         },
-                                        "type": "object"
-                                    }
+                                        "vehiculos_disponibles": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "marca": {
+                                                        "type": "string"
+                                                    },
+                                                    "modelo": {
+                                                        "type": "integer"
+                                                    },
+                                                    "precio": {
+                                                        "type": "integer"
+                                                    },
+                                                    "disponible": {
+                                                        "type": "boolean"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             }
                         }

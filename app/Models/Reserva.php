@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Vehiculo;
+
 
 class Reserva extends Model
 {
@@ -12,6 +14,10 @@ class Reserva extends Model
     protected $fillable = [
         'id',
         'email_cliente'
-        //vincular reservaDetalle
     ];
+
+    public function vehiculo()
+    {
+        return $this->belongsTo(Vehiculo::class);
+    }
 }

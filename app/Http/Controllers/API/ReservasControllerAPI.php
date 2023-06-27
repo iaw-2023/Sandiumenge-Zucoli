@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Reserva;
 use App\Models\ReservaDetalles;
+use App\Models\Vehiculo;
 use Illuminate\Support\Facades\Validator;
 
 class ReservasControllerAPI extends Controller
@@ -188,16 +189,22 @@ class ReservasControllerAPI extends Controller
      *         )
      *     ),
      *     @OA\Response(
-     *         response=200,
-     *         description="Reserva creada con exito.",
-     *         @OA\JsonContent(
-     *             type="array",
+     *     response=200,
+     *     description="Reserva creada correctamente",
+     *     @OA\JsonContent(
+     *         type="object",
+     *         @OA\Property(property="mensaje", type="string"),
+     *         @OA\Property(property="vehiculos_disponibles", type="array",
      *             @OA\Items(
-     *                @OA\Property(property="id", type="integer", example="1"),
-     *                @OA\Property(property="email", type="string")
+     *                 @OA\Property(property="id", type="integer"),
+     *                 @OA\Property(property="marca", type="string"),
+     *                 @OA\Property(property="modelo", type="integer"),
+     *                 @OA\Property(property="precio", type="integer"),
+     *                 @OA\Property(property="disponible", type="boolean")
      *             )
      *         )
-     *     ),
+     *     )
+     * ),
      *     @OA\Response(
      *         response=400,
      *         description="Error al crear la reserva"
@@ -219,13 +226,18 @@ class ReservasControllerAPI extends Controller
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
+        $vehiculosDisponibles = Vehiculo::all();
+
         $reserva = new Reserva();
         $reserva->email = $request->input('email');
         $reserva->fecha_inicio = $request->input('fecha_inicio');
         $reserva->fecha_final = $request->input('fecha_final');
         $reserva->save();
 
-        return response()->json(['mensaje' => 'Reserva creada correctamente'], 200);
+        return response()->json([
+            'mensaje' => 'Reserva creada correctamente',
+            'vehiculos_disponibles' => $vehiculosDisponibles,
+        ], 200);
     }
 }
 
