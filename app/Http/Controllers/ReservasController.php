@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reserva;
+use App\Models\ReservaDetalles;
 use App\Models\Marca;
+use App\Models\Vehiculo;
 
 class ReservasController extends Controller
 {
@@ -73,10 +75,18 @@ class ReservasController extends Controller
      */
     public function edit(string $id)
     {
-        $reserva = Reserva::find($id);
+        $reserva = Reserva::with('vehiculo')->find($id);
         $marcas = Marca::all();
-        return view('reservas.edit')->with(['reserva' => $reserva, 'marcas' => $marcas]);
+
+        $vehiculosAsociados = $reserva->vehiculo;
+
+        return view('reservas.edit')->with([
+            'reserva' => $reserva,
+            'marcas' => $marcas,
+            'vehiculosAsociados' => $vehiculosAsociados
+        ]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -98,10 +108,20 @@ class ReservasController extends Controller
      */
     public function destroy(string $id)
     {
-        $reserva = Reserva::find($id);
+        $reserva = Reserva::findOrFail($id);
+
+        if($this->reservaDetalleAsociada($reserva)){
+            session()->flash('error', 'No se puede borrar una reserva asociada a detalles');
+            return redirect()->back();
+        }
 
         $reserva->delete();
+        session()->flash('success', 'Se elimino la reserva');
+        return redirect('/marcas');
+    }
 
-        return redirect('/reservas');
+    private function reservaDetalleAsociada($reserva)
+    {
+        return ReservaDetalles::where('id_reserva', $reserva->id)->exists();
     }
 }

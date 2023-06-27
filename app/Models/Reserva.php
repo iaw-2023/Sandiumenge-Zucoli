@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Vehiculo;
+use App\Models\ReservaDetalles;
 
 
 class Reserva extends Model
@@ -18,6 +19,11 @@ class Reserva extends Model
 
     public function vehiculo()
     {
-        return $this->belongsTo(Vehiculo::class);
+        return $this->belongsToMany(Vehiculo::class, 'reserva_vehiculo', 'reserva_id', 'vehiculo_id');
+    }
+
+    public function detalles()
+    {
+        return $this->hasOne(ReservaDetalles::class, 'id');
     }
 }

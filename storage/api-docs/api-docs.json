@@ -384,6 +384,12 @@
                                         "type": "string",
                                         "format": "date",
                                         "example": "18-05-2024"
+                                    },
+                                    "vehiculos": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        }
                                     }
                                 },
                                 "type": "object"
@@ -400,29 +406,6 @@
                                     "properties": {
                                         "mensaje": {
                                             "type": "string"
-                                        },
-                                        "vehiculos_disponibles": {
-                                            "type": "array",
-                                            "items": {
-                                                "properties": {
-                                                    "id": {
-                                                        "type": "integer"
-                                                    },
-                                                    "marca": {
-                                                        "type": "string"
-                                                    },
-                                                    "modelo": {
-                                                        "type": "integer"
-                                                    },
-                                                    "precio": {
-                                                        "type": "integer"
-                                                    },
-                                                    "disponible": {
-                                                        "type": "boolean"
-                                                    }
-                                                },
-                                                "type": "object"
-                                            }
                                         }
                                     },
                                     "type": "object"

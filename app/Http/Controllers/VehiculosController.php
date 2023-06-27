@@ -33,7 +33,7 @@ class VehiculosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'modelo' => 'required|min:3|max:255',
+            'modelo' => 'required|min:1|max:255',
             'precio' => 'required|min:3|max:255',
             'disponible' => 'required|min:0|max:1',
             'disponible' => 'required|in:0,1',
@@ -90,7 +90,7 @@ class VehiculosController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'modelo' => 'required|min:3|max:255',
+            'modelo' => 'required|min:1|max:255',
             'precio' => 'required|min:3|max:255',
             'disponible' => 'required|min:0|max:1',
             'disponible' => 'required|in:0,1',

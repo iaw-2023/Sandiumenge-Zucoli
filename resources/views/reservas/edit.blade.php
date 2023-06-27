@@ -15,14 +15,22 @@
         <input id="email" name="email" value="{{$reserva->email}}" type="text" class="form-control" tabindex="2">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">VEHICULO</label>
-        <select name="id_marca" id="id_marca" class="form-control">
-             @foreach($marcas as $marca)
-                 <option value="{{ $marca->id }}">{{ $marca->marca }}</option>
-             @endforeach
-        </select>
+    <label for="" class="form-label">VEHÍCULOS ASOCIADOS</label>
+    <div class="row">
+            @foreach ($vehiculosAsociados as $vehiculo)
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $vehiculo->marca->marca }}</h5>
+                            <p class="card-text">Modelo: {{ $vehiculo->modelo }}</p>
+                            <p class="card-text">Precio: {{ $vehiculo->precio }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
-    
+
     <div>
         <a href="/reservas" class="btn btn-secondary" tabindex="3">CANCELAR</a>
         <button type="submit" class="btn btn-primary" tabindex="4">GUARDAR</button>

@@ -185,7 +185,8 @@ class ReservasControllerAPI extends Controller
      *         @OA\JsonContent(
      *             @OA\Property(property="email", type="string", example="test@gmail.com"),
      *             @OA\Property(property="fecha_inicio", type="string", format="date", example="18-05-2023"),
-     *             @OA\Property(property="fecha_final", type="string", format="date", example="18-05-2024")
+     *             @OA\Property(property="fecha_final", type="string", format="date", example="18-05-2024"),
+     *             @OA\Property(property="vehiculos", type="array", @OA\Items(type="integer"))
      *         )
      *     ),
      *     @OA\Response(
@@ -193,16 +194,7 @@ class ReservasControllerAPI extends Controller
      *     description="Reserva creada correctamente",
      *     @OA\JsonContent(
      *         type="object",
-     *         @OA\Property(property="mensaje", type="string"),
-     *         @OA\Property(property="vehiculos_disponibles", type="array",
-     *             @OA\Items(
-     *                 @OA\Property(property="id", type="integer"),
-     *                 @OA\Property(property="marca", type="string"),
-     *                 @OA\Property(property="modelo", type="integer"),
-     *                 @OA\Property(property="precio", type="integer"),
-     *                 @OA\Property(property="disponible", type="boolean")
-     *             )
-     *         )
+     *         @OA\Property(property="mensaje", type="string")
      *     )
      * ),
      *     @OA\Response(
@@ -217,16 +209,20 @@ class ReservasControllerAPI extends Controller
             'email' => 'required|min:3|max:255',
             'fecha_inicio' => 'required|date',
             'fecha_final' => 'required|date|after:fecha_inicio',
+            'vehiculos' => 'required|array',
+            'vehiculos.*' => 'integer|exists:vehiculos,id', 
         ], [
             'email.required' => 'El campo email es obligatorio',
             'fecha_final.after' => 'La fecha de finalización debe ser posterior a la fecha de inicio',
+            'vehiculos.required' => 'Debe seleccionar al menos un vehículo',
+            'vehiculos.array' => 'El campo vehiculos debe ser un arreglo',
+            'vehiculos.*.integer' => 'Los identificadores de vehículos deben ser enteros',
+            'vehiculos.*.exists' => 'Algunos de los identificadores de vehículos no existen',
         ]);
     
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 400);
         }
-
-        $vehiculosDisponibles = Vehiculo::all();
 
         $reserva = new Reserva();
         $reserva->email = $request->input('email');
@@ -234,9 +230,18 @@ class ReservasControllerAPI extends Controller
         $reserva->fecha_final = $request->input('fecha_final');
         $reserva->save();
 
+        $vehiculos = $request->input('vehiculos');
+        foreach ($vehiculos as $vehiculoId) 
+        {
+            $vehiculo = Vehiculo::find($vehiculoId);
+            if ($vehiculo) {
+                $reserva->vehiculo()->attach($vehiculo);
+            }
+        }
+
         return response()->json([
             'mensaje' => 'Reserva creada correctamente',
-            'vehiculos_disponibles' => $vehiculosDisponibles,
+            'id_reserva' => $reserva->id,
         ], 200);
     }
 }
