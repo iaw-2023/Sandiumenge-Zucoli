@@ -521,19 +521,19 @@
                 }
             }
         },
-        "/rest/vehiculos/vehiculo/{id_marca}": {
+        "/rest/vehiculos/vehiculo/{marca}": {
             "get": {
                 "tags": [
                     "Vehiculos"
                 ],
-                "summary": "Buscar vehiculo por id de una marca",
-                "description": "Retorna un vehiculo",
-                "operationId": "9299e1686c39bb78d98bbe9ae6baf939",
+                "summary": "Buscar vehiculo por una marca",
+                "description": "Retorna vehiculos",
+                "operationId": "983b2dde2f23eb77420949543ee90cfe",
                 "parameters": [
                     {
-                        "name": "idMarca",
+                        "name": "marca",
                         "in": "path",
-                        "description": "id de la marca relacionada al vehiculo a buscar",
+                        "description": "marca relacionada al vehiculo a buscar",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -552,7 +552,6 @@
                                             "vehiculo": {
                                                 "type": "string",
                                                 "maxLength": 50,
-                                                "example": "id de una Marca",
                                                 "nullable": true
                                             }
                                         },
@@ -595,24 +594,33 @@
                         "description": "Modelo del vehiculo a buscar",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "integer"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Modelo encontrado",
+                        "description": "Vehiculo encontrado",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "type": "array",
                                     "items": {
                                         "properties": {
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "marca": {
+                                                "type": "string"
+                                            },
                                             "modelo": {
-                                                "type": "string",
-                                                "maxLength": 50,
-                                                "example": "Modelo de un vehiculo",
-                                                "nullable": true
+                                                "type": "integer"
+                                            },
+                                            "precio": {
+                                                "type": "integer"
+                                            },
+                                            "disponible": {
+                                                "type": "boolean"
                                             }
                                         },
                                         "type": "object"
@@ -621,8 +629,8 @@
                             }
                         }
                     },
-                    "404": {
-                        "description": "No se encontro el modelo",
+                    "401": {
+                        "description": "No se encontro vehiculo",
                         "content": {
                             "application/json": {
                                 "schema": {

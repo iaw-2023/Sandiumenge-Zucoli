@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Vehiculo;
+use App\Models\Marca;
 
 class VehiculosControllerAPI extends Controller
 {
@@ -83,14 +84,14 @@ class VehiculosControllerAPI extends Controller
 
     /**
      * @OA\Get(
-     *     path="/rest/vehiculos/vehiculo/{id_marca}",
-     *     summary="Buscar vehiculo por id de una marca",
-     *     description="Retorna un vehiculo",
+     *     path="/rest/vehiculos/vehiculo/{marca}",
+     *     summary="Buscar vehiculo por una marca",
+     *     description="Retorna vehiculos",
      *     tags={"Vehiculos"},
      *     @OA\Parameter(
-     *         name="idMarca",
+     *         name="marca",
      *         in="path",
-     *         description="id de la marca relacionada al vehiculo a buscar",
+     *         description="marca relacionada al vehiculo a buscar",
      *         required=true,
      *         @OA\Schema(
      *             type="string"
@@ -102,7 +103,7 @@ class VehiculosControllerAPI extends Controller
      *          @OA\JsonContent(
      *             type="array",
      *             @OA\Items(
-     *                 @OA\Property(property="vehiculo", type="string", maxLength=50, nullable=true, example="id de una Marca")
+     *                 @OA\Property(property="vehiculo", type="string", maxLength=50, nullable=true)
      *             )
      *         )
      *     ),
@@ -115,13 +116,16 @@ class VehiculosControllerAPI extends Controller
      *     )
      * )
      */
-    public function buscarVehiculoPorMarca(int $idMarca)
+    public function buscarVehiculoPorMarca($marca)
     {
-        $vehiculo = Marca::where('id_marca', $idMarca)->get();
-        if(!$vehiculo){
+        $vehiculos = Vehiculo::whereHas('marca', function ($query) use ($marca) {
+            $query->where('marca', $marca);
+        })->get();
+
+        if(!$vehiculos){
             return response()->json(['error' => 'No existe la Marca'], 404);
         }
-        return response()->json($vehiculo);
+        return response()->json($vehiculos);
     }
 
     /**
@@ -136,35 +140,39 @@ class VehiculosControllerAPI extends Controller
      *         description="Modelo del vehiculo a buscar",
      *         required=true,
      *         @OA\Schema(
-     *             type="string"
+     *             type="integer"
      *         )
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Modelo encontrado",
-     *          @OA\JsonContent(
+     *         description="Vehiculo encontrado",
+     *         @OA\JsonContent(
      *             type="array",
      *             @OA\Items(
-     *                 @OA\Property(property="modelo", type="string", maxLength=50, nullable=true, example="Modelo de un vehiculo")
+     *                  @OA\Property(property="id", type="integer"),
+     *                  @OA\Property(property="marca", type="string"),
+     *                  @OA\Property(property="modelo", type="integer"),
+     *                  @OA\Property(property="precio", type="integer"),
+     *                  @OA\Property(property="disponible", type="boolean")
      *             )
      *         )
      *     ),
      *     @OA\Response(
-     *         response=404,
-     *         description="No se encontro el modelo",
+     *         response=401,
+     *         description="No se encontro vehiculo",
      *         @OA\JsonContent(
      *             @OA\Property(property="error", type="string")
      *         )
      *     )
      * )
      */
-    public function buscarVehiculoPorModelo(string $modelo)
+    public function buscarVehiculoPorModelo(int $modelo)
     {
-        $modelo = Vehiculo::where('modelo', $modelo)->get();
-        if (!$modelo) {
-            return response()->json(['error' => 'No se encuentra el Vehiculo por Modelo'], 404);
+        $vehiculos = Vehiculo::where('modelo', $modelo)->get();
+        if ($vehiculos->isEmpty()) {
+            return response()->json(['error' => 'No existen vehículos para el modelo especificado'], 401);
         }
-        return response()->json($modelo);
+        return response()->json($vehiculos);
     }
 }
 
