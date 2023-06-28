@@ -24,7 +24,7 @@ Route::get('/marcas/marca/{marca}', [MarcasControllerAPI::class, 'buscarMarca'])
 Route::get('/vehiculos', [VehiculosControllerAPI::class, 'index']);
 Route::get('/vehiculos/show/{id}', [VehiculosControllerAPI::class, 'show']);
 Route::get('/vehiculos/vehiculo/{id_marca}', [VehiculosControllerAPI::class, 'buscarVehiculoPorMarca']);
-Route::get('/vehiculos/vehiculo/{modelo}', [VehiculosControllerAPI::class, 'buscarVehiculoPorModelo']);
+Route::post('/vehiculos/vehiculo/{modelo}', [VehiculosControllerAPI::class, 'buscarVehiculoPorModelo']);
 
 Route::get('/reservas', [ReservasControllerAPI::class, 'index']);
 Route::get('/reservas/show/{id}', [ReservasControllerAPI::class, 'show']);

@@ -129,7 +129,7 @@ class VehiculosControllerAPI extends Controller
     }
 
     /**
-     * @OA\Get(
+     * @OA\Post(
      *     path="/rest/vehiculos/vehiculo/{modelo}",
      *     summary="Buscar vehiculo por modelo",
      *     description="Retorna un vehiculo",

@@ -580,13 +580,13 @@
             }
         },
         "/rest/vehiculos/vehiculo/{modelo}": {
-            "get": {
+            "post": {
                 "tags": [
                     "Vehiculos"
                 ],
                 "summary": "Buscar vehiculo por modelo",
                 "description": "Retorna un vehiculo",
-                "operationId": "cc21824cc9b8c8ace6a3bd33e7264d15",
+                "operationId": "078255c81c980f73dc708963961d7493",
                 "parameters": [
                     {
                         "name": "modelo",
