@@ -3,6 +3,7 @@
 <title>DreamCar | ReservasDetalles</title>
 @section('contenido')
 <a href="/home" class="btn btn-primary">HOME</a>
+<a href="/reservas" class="btn btn-primary">VOLVER</a>
 <a href="reservasDetalle/create" class="btn btn-primary">AGREGAR RESERVA DETALLES</a>
 
 <table class="table table-dark table-striped mt-4">
