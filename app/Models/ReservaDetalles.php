@@ -15,4 +15,9 @@ class ReservaDetalles extends Model
         'id_reserva',
         'precio',
     ];
+
+    public function reserva()
+    {
+        return $this->belongsTo(Reserva::class);
+    }
 }

@@ -24,7 +24,7 @@
     </div>
     
     <div>
-        <a href="/reservasDetalle" class="btn btn-secondary" tabindex="5">CANCELAR</a>
+        <a href="/reservas" class="btn btn-secondary" tabindex="5">CANCELAR</a>
         <button type="submit" class="btn btn-primary" tabindex="6">GUARDAR</button>
     </div>
 </form>

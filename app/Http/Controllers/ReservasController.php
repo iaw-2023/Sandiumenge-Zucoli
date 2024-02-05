@@ -14,9 +14,10 @@ class ReservasController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {  
         $reservas = Reserva::all();
-        return view('reservas.index')->with('reservas',$reservas);
+        $reservaD = ReservaDetalles::all();
+        return view('reservas.index', compact('reservas', 'reservaD'));
     }
 
     /**

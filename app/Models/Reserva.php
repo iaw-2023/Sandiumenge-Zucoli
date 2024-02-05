@@ -24,6 +24,11 @@ class Reserva extends Model
 
     public function detalles()
     {
-        return $this->hasOne(ReservaDetalles::class, 'id');
+        return $this->hasMany(ReservaDetalles::class);
+    }
+
+    public function reservaDetalles()
+    {
+        return $this->hasOne(ReservaDetalles::class, 'reserva_detalles_id');
     }
 }

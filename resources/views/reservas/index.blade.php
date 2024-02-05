@@ -15,10 +15,10 @@
 <table class="table table-dark table-striped mt-4">
     <thead>
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">EMAIL</th>
-            <th scope="col"> </th>
-            <th scope="col"> </th>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Acciones</th>
+            <th> </th>
         </tr>
     </thead>
     <tbody>
@@ -26,14 +26,21 @@
         <tr>
             <td>{{ $reserva->id }}</td>
             <td>{{ $reserva->email }}</td>
-            <td><a href="/reservas/{{ $reserva->id }}/edit" class="btn btn-info">EDITAR</a></td>
-            <td>
-                <form action="{{ route('reservas.destroy',$reserva->id) }}" method='POST'>
+            <td><a href="/reservas/{{ $reserva->id }}/edit" class="btn btn-info">Editar</a></td>
+            <td> 
+                <form action="{{ route('reservas.destroy', $reserva->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">BORRAR</button>
+                    <button type="submit" class="btn btn-danger">Borrar</button>
                 </form>
             </td>
+            <!-- <td>
+                @foreach ($reservaD as $rD)
+                    @if ($rD->id_reserva == $reserva->id)
+                        <a href="{{ route('reservasDetalle.edit', $rD->id) }}" class="btn btn-warning">Detalles</a>
+                    @endif
+                @endforeach
+            </td> -->
         </tr>
         @endforeach
     </tbody>
