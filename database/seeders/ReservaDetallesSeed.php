@@ -15,12 +15,5 @@ class ReservaDetallesSeed extends Seeder
     {
         ReservaDetalles::factory(5)->create();
         
-        ReservaDetalles::factory()->create([
-            'id' => '86',
-            'id_vehiculo' =>  '76',
-            'id_reserva' =>  '99',
-            'precio'=> true,
-        ]);
-        
     }
 }
