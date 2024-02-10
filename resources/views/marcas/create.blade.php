@@ -21,7 +21,7 @@
 @endif
 
 <form action="/marcas" method="POST">
-    @csrf <!-- directiva para el submit que nos crea un token oculto-->
+    @csrf 
     <div class="mb-3">
         <label for="" class="form-label">MARCA</label>
         <input id="marca" name="marca" type="text" class="form-control" tabindex="2">

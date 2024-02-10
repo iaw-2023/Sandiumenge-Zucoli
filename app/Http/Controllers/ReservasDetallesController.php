@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ReservaDetalles;
+use App\Models\Reserva;
+use App\Models\Vehiculo;
+use App\Models\Marca;
 
 class ReservasDetallesController extends Controller
 {
@@ -21,7 +24,18 @@ class ReservasDetallesController extends Controller
      */
     public function create()
     {
-        return view('reservasDetalle.create');
+        $reservasConDetalleIds = ReservaDetalles::pluck('id_reserva')->toArray();
+        $reservasTodosIds = Reserva::pluck('id')->toArray();
+        $idReservaSinDetalle = array_diff($reservasTodosIds, $reservasConDetalleIds);
+
+        $vehiculosDisponibles = Vehiculo::where('disponible', true)->get();
+        $marcas = Marca::all();
+        
+        return view('reservasDetalle.create', [
+            'idReservaSinDetalle' => $idReservaSinDetalle,
+            'vehiculosDisponibles' => $vehiculosDisponibles,
+            'marcas' => $marcas,
+        ]);
     }
 
     /**
