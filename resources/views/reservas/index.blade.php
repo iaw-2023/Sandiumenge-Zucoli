@@ -4,7 +4,7 @@
 @section('contenido')
 <a href="/home" class="btn btn-primary">HOME</a>
 <a href="reservas/create" class="btn btn-primary">AGREGAR RESERVA</a>
-
+<a href="reservasDetalle" class="btn btn-primary">VER DETALLES DE LAS RESERVAS</a>
 @if(session('success'))
     <div id="alert" class="alert alert-success">{{ session('success') }}</div>
 @endif
@@ -34,16 +34,9 @@
                     <button type="submit" class="btn btn-danger">Borrar</button>
                 </form>
             </td>
-            <!-- <td>
-                @foreach ($reservaD as $rD)
-                    @if ($rD->id_reserva == $reserva->id)
-                        <a href="{{ route('reservasDetalle.edit', $rD->id) }}" class="btn btn-warning">Detalles</a>
-                    @endif
-                @endforeach
-            </td> -->
         </tr>
         @endforeach
     </tbody>
 </table>
-<a href="reservasDetalle" class="btn btn-primary">VER DETALLES DE LAS RESERVAS</a>
+
 @endsection

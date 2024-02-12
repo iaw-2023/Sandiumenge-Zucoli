@@ -10,9 +10,8 @@ class ReservaDetalles extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
-        'id_vehiculo',
         'id_reserva',
+        'id_vehiculo',
         'precio',
     ];
 

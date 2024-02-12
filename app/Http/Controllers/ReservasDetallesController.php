@@ -43,16 +43,9 @@ class ReservasDetallesController extends Controller
      */
     public function store(Request $request)
     {
-        $reservasD = new ReservaDetalles();
-
-        $reservasD->id = $request->get('id');
-        $reservasD->precio = $request->get('precio');
-        $reservasD->id_reserva = $request->get('id_reserva');
-        $reservasD->id_vehiculo = $request->get('id_vehiculo');
-
+        $reservasD = new ReservaDetalles($request->all());
         $reservasD->save();
-
-        return redirect('/reservasDetalles');
+        return redirect('/reservasDetalle');
     }
 
     /**
