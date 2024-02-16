@@ -5,6 +5,7 @@
 @section('contenido')
 <a href="/home" class="btn btn-primary">HOME</a>
 <a href="marcas/create" class="btn btn-primary">AGREGAR MARCA</a>
+<a href="/logos" class="btn btn-primary">AGREGAR LOGO</a>
 
 @if(session('success'))
     <div id="alert" class="alert alert-success">{{ session('success') }}</div>

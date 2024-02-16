@@ -13,7 +13,7 @@
             @auth
                 @if(auth()->user()->isAdmin())
                     <li><a href="/reservas"><button type="button" class="btn btn-outline-primary">Reserva</button></a></li>
-                    <li><a href="/logos"><button type="button" class="btn btn-outline-primary">Logos</button></a></li>
+                    
                     <li><a href="/marcas"><button type="button" class="btn btn-outline-primary">Marcas</button></a></li>
                     <li><a href="/vehiculos"><button type="button" class="btn btn-outline-primary">Vehiculo</button></a></li>
                     

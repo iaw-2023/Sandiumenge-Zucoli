@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LogoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +41,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('reservas', 'App\Http\Controllers\ReservasController');
     Route::resource('reservasDetalle', 'App\Http\Controllers\ReservasDetallesController');
     Route::resource('logos', 'App\Http\Controllers\LogoController');
+    
+    /* Route::get('/logos', [LogoController::class, 'index'])->name('logos.index');
+    Route::post('/logos', [LogoController::class, 'store'])->name('logos.store'); */
+
 
     // Rutas accesibles solo por empleados
     Route::middleware('role:employee')->group(function () {
