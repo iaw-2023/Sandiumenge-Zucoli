@@ -13,10 +13,5 @@ class ReservaSeed extends Seeder
     public function run(): void
     {
         \App\Models\Reserva::factory(5)->create();
-
-        \App\Models\Reserva::factory()->create([
-            'id' => '99',
-            'email'=> 'test@gmail.com',
-        ]);
     }
 }

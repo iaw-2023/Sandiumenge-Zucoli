@@ -22,13 +22,8 @@ class Reserva extends Model
         return $this->belongsToMany(Vehiculo::class, 'reserva_vehiculo', 'reserva_id', 'vehiculo_id');
     }
 
-    public function detalles()
-    {
-        return $this->hasMany(ReservaDetalles::class);
-    }
-
     public function reservaDetalles()
     {
-        return $this->hasOne(ReservaDetalles::class, 'reserva_detalles_id');
+        return $this->hasMany(ReservaDetalles::class, 'reserva_detalles_id');
     }
 }

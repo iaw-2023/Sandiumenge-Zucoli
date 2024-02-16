@@ -4,16 +4,17 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\ReservaDetalles;
+use App\Models\Role;
+use App\Models\User;
 
-class ReservaDetallesSeed extends Seeder
+class RolesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        ReservaDetalles::factory(5)->create();
-        
+        Role::create(['name' => 'admin']);
+        Role::create(['name' => 'employee']);
     }
 }

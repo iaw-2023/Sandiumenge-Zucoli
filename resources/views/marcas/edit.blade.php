@@ -4,7 +4,7 @@
 <h2>EDITAR REGISTRO</h2>
 
 <form action="/marcas/{{ $marca->id }}" method="POST">
-    @csrf <!-- directiva para el submit que nos crea un token oculto-->
+    @csrf
     @method('PUT')
     <div class="mb-3">
         <label for="" class="form-label">ID</label>
