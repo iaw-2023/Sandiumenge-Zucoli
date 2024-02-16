@@ -5,6 +5,7 @@
 <head>
     <title>Home | DreamCar</title>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{csrf_token() }}">
     <meta name="viewport"
         content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href=
@@ -19,6 +20,7 @@
 <body>
     <center>
         <h1 class="text-success">DreamCar</h1>
+        <li><button id="button-submit">Contexto</button></li>
         <div id="myCarousel" class="carousel slide"
                 data-ride="carousel">
             <!-- Indicators -->
@@ -57,3 +59,49 @@
     </center>
 </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    })
+    $(document).ready(function () {
+        $('#button-submit').on('click', function(){
+            // Primera llamada AJAX para obtener el mensaje
+            $.ajax({
+                url: '/obtener-mensaje',
+                method: 'GET',
+                success: function (data) {
+                    var mensaje = data;
+
+                    // Segunda llamada AJAX con el mensaje obtenido
+                    $.ajax({
+                        url: '/obtener-respuesta-chatgpt',
+                        method: 'GET',
+                        data: {
+                            _token: $('meta[name="csrf-token"]').attr('content'),
+                            mensaje: mensaje
+                        },
+                        success: function(respuesta) {
+                            console.log(respuesta)
+                            alert(respuesta);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error en la segunda solicitud Ajax:');
+                            console.log('XHR:', xhr);
+                            console.log('Status:', status);
+                            console.log('Error:', error);
+
+                            // Agrega esta línea para imprimir la respuesta del servidor
+                            console.log('Respuesta del Servidor:', xhr.responseText);
+                        }
+                    });
+                },
+                error: function (error) {
+                    console.error('Error al obtener el mensaje:', error);
+                }
+            });
+        });
+    });
+</script>
