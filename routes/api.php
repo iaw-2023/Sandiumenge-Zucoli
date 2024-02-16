@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\MarcasControllerAPI;
 use App\Http\Controllers\API\VehiculosControllerAPI;
 use App\Http\Controllers\API\ReservasControllerAPI;
+use App\Http\Controllers\API\LogosControllerAPI;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,9 @@ Route::get('/reservas/show/{id}', [ReservasControllerAPI::class, 'show']);
 Route::get('/reservas/reserva/{id}', [ReservasControllerAPI::class, 'mostrarDetalles']);
 Route::get('/reservas/reserva/{email_cliente}', [ReservasControllerAPI::class, 'buscarPorMail']);
 Route::post('/reservas/crearReserva', [ReservasControllerAPI::class, 'crearReserva']);
+
+Route::get('/logos', [LogosControllerAPI::class, 'index']);
+Route::get('/logos/{id}', [LogosControllerAPI::class, 'show']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

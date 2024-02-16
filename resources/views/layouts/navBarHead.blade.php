@@ -13,8 +13,10 @@
             @auth
                 @if(auth()->user()->isAdmin())
                     <li><a href="/reservas"><button type="button" class="btn btn-outline-primary">Reserva</button></a></li>
+                    
                     <li><a href="/marcas"><button type="button" class="btn btn-outline-primary">Marcas</button></a></li>
                     <li><a href="/vehiculos"><button type="button" class="btn btn-outline-primary">Vehiculo</button></a></li>
+                    
                 @elseif(auth()->user()->isEmployee())
                     <li><a href="/reservas"><button type="button" class="btn btn-outline-primary">Reserva</button></a></li>
                 @endif

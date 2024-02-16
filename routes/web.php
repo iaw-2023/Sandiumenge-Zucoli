@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LogoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,15 +35,20 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
-    // Rutas accesibles por administradores y empleados
+    // Rutas accesibles por administradores
     Route::resource('marcas', 'App\Http\Controllers\MarcasController');
     Route::resource('vehiculos', 'App\Http\Controllers\VehiculosController');
     Route::resource('reservas', 'App\Http\Controllers\ReservasController');
     Route::resource('reservasDetalle', 'App\Http\Controllers\ReservasDetallesController');
+    Route::resource('logos', 'App\Http\Controllers\LogoController');
+    
+    /* Route::get('/logos', [LogoController::class, 'index'])->name('logos.index');
+    Route::post('/logos', [LogoController::class, 'store'])->name('logos.store'); */
+
 
     // Rutas accesibles solo por empleados
     Route::middleware('role:employee')->group(function () {
-        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         /* Route::resource('reservas', ReservasController::class);
         Route::resource('reservasDetalle', ReservasDetallesController::class); */
     });
