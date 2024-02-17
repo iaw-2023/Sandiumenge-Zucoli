@@ -19,7 +19,7 @@
     </div>
 @endif
 <form action="/reservas" method="POST">
-    @csrf <!-- directiva para el submit que nos crea un token oculto-->
+    @csrf
     <div class="mb-3">
         <label for="" class="form-label">EMAIL</label>
         <input id="email" name="email" type="text" class="form-control" tabindex="2">
