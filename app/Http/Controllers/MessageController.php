@@ -10,7 +10,6 @@ class MessageController extends Controller
 {
     public function obtenerMensaje()
     {
-        // Lógica para contar reservas por marca y construir el mensaje
         $conteoReservasPorMarca = DB::table('marcas')
             ->leftJoin('vehiculos', 'marcas.id', '=', 'vehiculos.id_marca')
             ->leftJoin('reserva_detalles', 'vehiculos.id', '=', 'reserva_detalles.id_vehiculo')
@@ -18,7 +17,7 @@ class MessageController extends Controller
             ->groupBy('marcas.marca')
             ->get();
 
-        $mensaje = 'Hola, ChatGPT. Sabiendo las siguientes preferencias de la gente decime que podes opinar del mercado. Se reservaron ';
+        $mensaje = 'Hola, ChatGPT. Sabiendo las siguientes preferencias de la gente decime que podes opinar del mercado usando menos de 50 palabras. Se reservaron ';
         foreach ($conteoReservasPorMarca as $reservaPorMarca) {
             $mensaje .= $reservaPorMarca->conteo_reservas . ' ' . strtolower($reservaPorMarca->marca) . ' ';
             $mensaje .= ($reservaPorMarca->conteo_reservas == 1) ? 'y ' : 'y ';

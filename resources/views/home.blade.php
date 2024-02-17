@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{csrf_token() }}">
     <meta name="viewport"
         content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>    
     <link rel="stylesheet" href=
 "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src=
@@ -20,7 +21,7 @@
 <body>
     <center>
         <h1 class="text-success">DreamCar</h1>
-        <li><button id="button-submit">Contexto</button></li>
+        <button type="button" class="btn btn-outline-info" id="button-submit">Consultar preferencias</button>
         <div id="myCarousel" class="carousel slide"
                 data-ride="carousel">
             <!-- Indicators -->
@@ -68,14 +69,11 @@
     })
     $(document).ready(function () {
         $('#button-submit').on('click', function(){
-            // Primera llamada AJAX para obtener el mensaje
             $.ajax({
                 url: '/obtener-mensaje',
                 method: 'GET',
                 success: function (data) {
                     var mensaje = data;
-
-                    // Segunda llamada AJAX con el mensaje obtenido
                     $.ajax({
                         url: '/obtener-respuesta-chatgpt',
                         method: 'GET',
@@ -85,15 +83,18 @@
                         },
                         success: function(respuesta) {
                             console.log(respuesta)
-                            alert(respuesta);
+                            Swal.fire({
+                                title: 'Preferencias del mercado segun ChatGPT',
+                                text: respuesta,
+                                icon: 'success',
+                                confirmButtonText: 'Aceptar'
+                            });
                         },
                         error: function(xhr, status, error) {
                             console.error('Error en la segunda solicitud Ajax:');
                             console.log('XHR:', xhr);
                             console.log('Status:', status);
                             console.log('Error:', error);
-
-                            // Agrega esta línea para imprimir la respuesta del servidor
                             console.log('Respuesta del Servidor:', xhr.responseText);
                         }
                     });
