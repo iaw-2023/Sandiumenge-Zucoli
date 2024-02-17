@@ -76,11 +76,6 @@ return [
             'prefix_indexes' => true,
             'search_path' => 'public',
             'sslmode' => 'prefer',
-            'schema'   => 'public',
-            'options'  => [
-                PDO::ATTR_SSL_MODE => PDO::SSLMODE_VERIFY_FULL, // Puede ser diferente según la configuración de Supabase
-                PDO::ATTR_SSL_CA   => env('DB_SSL_CA'),
-            ],
         ],
 
         'sqlsrv' => [
