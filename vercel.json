@@ -29,6 +29,7 @@
         "APP_ROUTES_CACHE": "/tmp/routes.php",
         "APP_SERVICES_CACHE": "/tmp/services.php",
         "VIEW_COMPILED_PATH": "/tmp/views",
+        "DATABASE_URL": "postgres://postgres:iaw2023laravel@db.hiavuvcrtdbsajcrzhkl.supabase.co:5432/postgres",
 
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
