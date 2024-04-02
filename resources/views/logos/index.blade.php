@@ -23,24 +23,25 @@
     <form action="/logos" method="POST" enctype="multipart/form-data" class="mb-4">
         @csrf
         <div class="form-group">
-            <label for="icon">Upload Icon (PNG only for the moment)</label>
+            <label for="icon">Subir icono (PNG solamente)</label>
             <input type="file" class="form-control-file" logo="logo" name="name" accept=".png" required>
         </div>
-        <button type="submit" class="btn btn-primary">Upload</button>
+        <button type="submit" class="btn btn-primary">Subir</button>
     </form>
 
     <div class="row">
         @foreach($logos as $logo)
             <div class="col-md-4 mb-3">
                 <div class="card">
-                    <img src="{{ asset('uploads/'.$logo->name) }}" alt="{{ $logo->name }}" class="card-img-top">
+                <img src="{{ asset('uploads/'.$logo->name) }}" alt="{{ $logo->name }}" class="card-img-top" style="width: 200px; height: auto;">
                     <div class="card-body">
-                        <h5 class="card-title">Logo</h5>
+                        <h5 class="card-title">{{ $logo->name }}</h5>
                         <form action="/logos/{{ $logo->id }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Destroy</button>
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form>
+                        <a href="{{ route('logos.edit', $logo) }}" type="submit" class="btn btn-warning">Cambiar nombre</a>
                     </div>
                 </div>
             </div>
