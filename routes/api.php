@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\MarcasControllerAPI;
+use App\Http\Controllers\MPController;
 use App\Http\Controllers\API\VehiculosControllerAPI;
 use App\Http\Controllers\API\ReservasControllerAPI;
 use App\Http\Controllers\API\LogosControllerAPI;
@@ -40,3 +41,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/process_payment', [MPController::class, 'recibirPago']);
