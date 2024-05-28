@@ -11,7 +11,7 @@ use MercadoPago\MercadoPagoConfig;
 class MPController extends Controller
 {
     public function recibirPago(Request $request){
-        \MercadoPago\SDK::setAccessToken("TEST-8053378594437720-031311-587f4ecb82f0b74c12e4cb9b5c2161c9-414446673");
+        \MercadoPago\SDK::setAccessToken("TEST-8053378594437720-031311-587f4ecb82f0b74c12e4cb9b5c2161c9-414446673"); 
         $contents = $request;
         $payment = new \MercadoPago\Payment();
         $payment->transaction_amount = $contents['transaction_amount'];
