@@ -19,7 +19,7 @@
             
             <div class="card-body">
                 <h5 class="card-title">{{ $logo->name }}</h5>
-                <img src="{{ asset('uploads/'.$logo->name) }}" alt="{{ $logo->name }}" class="card-img-top" style="width: 200px; height: auto;">
+                <img src="{{ asset('storage/uploads/'.$logo->name) }}" alt="{{ $logo->name }}" class="card-img-top" style="width: 200px; height: auto;">
                 <form action="/logos/{{ $logo->id }}" method="POST">
             </div>
 

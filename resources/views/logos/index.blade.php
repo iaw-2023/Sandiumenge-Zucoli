@@ -33,7 +33,7 @@
         @foreach($logos as $logo)
             <div class="col-md-4 mb-3">
                 <div class="card">
-                <img src="{{ asset('uploads/'.$logo->name) }}" alt="{{ $logo->name }}" class="card-img-top" style="width: 200px; height: auto;">
+                <img src="{{ asset('storage/uploads/'.$logo->name) }}" alt="{{ $logo->name }}" class="card-img-top" style="width: 200px; height: auto;">
                     <div class="card-body">
                         <h5 class="card-title">{{ $logo->name }}</h5>
                         <form action="/logos/{{ $logo->id }}" method="POST">
